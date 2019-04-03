@@ -7,7 +7,7 @@
             <div class="mastercard__part red"></div>
             <div class="mastercard__part orange"></div>
             <div class="mastercard__copy">
-              <span class="js-letters">priceless</span>
+              <span class="js-letters">Mate Society</span>
             </div>
           </div>
         </a>
@@ -184,7 +184,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
 @import url(https://fonts.googleapis.com/css?family=Poppins:400);
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,200);
 
@@ -291,7 +291,6 @@ a {
 }
 
 .hero {
-  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -317,14 +316,15 @@ a {
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: url(https://dreamypixel.com/wp-content/uploads/2017/08/dark-mountains-1.jpg);
+  background-image: url(/images/home_background.jpg);
   background-size: cover;
   background-position: -50px bottom;
   transition: background-position 2s $easing;
 }
 
 .hero__strap {
-  position: relative;
+  position: absolute;
+  bottom: 0px;
   z-index: 5;
   padding: $side-padding $side-padding * 2;
 }
