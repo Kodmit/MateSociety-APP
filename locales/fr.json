@@ -1,9 +1,13 @@
 {
-  "lang": "Français",
+  "lang": "Langue",
   "home": {
     "concept": "Le concept",
     "contact": "Nous contacter",
     "login": "Connexion",
-    "register": "Rejoindre le mouvement !"
+    "register": "Rejoindre le mouvement !",
+    "text0": "Sport",
+    "text1": "Entraide",
+    "text2": "Camaraderie",
+    "small_text": "Intéressé(e) ?"
   }
 }

@@ -38,6 +38,8 @@ export default {
 .language-switcher {
   display: flex;
   padding: 1rem;
+  z-index: 99999;
+  position: absolute;
 }
 .languages {
   display: flex;

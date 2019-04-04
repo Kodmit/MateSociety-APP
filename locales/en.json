@@ -1,9 +1,13 @@
 {
-  "lang": "English",
+  "lang": "Lang",
   "home": {
     "concept": "Concept",
     "contact": "Contact us",
     "login": "Log In",
-    "register": "Join !"
+    "register": "Join !",
+    "text0": "Sport",
+    "text1": "Mutual aid",
+    "text2": "Camaraderie",
+    "small_text": "Interested ?"
   }
 }

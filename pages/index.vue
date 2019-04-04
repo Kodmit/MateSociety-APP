@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <div class="homepage">
     <div class="header">
       <h1 class="header__logo">
         <a href="#">
           <div class="mastercard">
-            <div class="mastercard__part red"></div>
-            <div class="mastercard__part orange"></div>
-            <div class="mastercard__copy">
+            <div>
+              <div class="mastercard__part red">
+                <i class="fas fa-dumbbell"></i>
+              </div>
+            </div>
+            <div class="mastercard__copy _title">
               <span class="js-letters">Mate Society</span>
             </div>
           </div>
@@ -14,12 +17,13 @@
       </h1>
 
       <div class="nav">
-        <a class="nav__item" href="#">{{ $t('home.concept') }}</a>
-        <a class="nav__item" href="#">{{ $t('home.contact') }}</a>
-        <a class="nav__item" href="#">{{ $t('home.login') }}</a>
-        <LangSwitcher />
+        <nuxt-link class="nav__item" :to="{ path: '/concept' }">{{ $t('home.concept') }}</nuxt-link>
+        <nuxt-link class="nav__item" :to="{ path: '/contact' }">{{ $t('home.contact') }}</nuxt-link>
+        <nuxt-link class="nav__item" :to="{ path: '/login' }">{{ $t('home.login') }}</nuxt-link>
       </div>
     </div>
+
+    <LangSwitcher />
 
     <div class="hero">
       <div class="hero__cover">
@@ -28,12 +32,12 @@
 
       <div class="hero__strap">
         <h2 class="hero__title">
-          <span class="js-letters">Shop the year's</span>
-          <span class="js-letters">most exciting</span>
-          <span class="js-letters">design fair</span>
+          <span class="js-letters">{{ $t('home.text0') }}</span>
+          <span class="js-letters">{{ $t('home.text1') }}</span>
+          <span class="js-letters">{{ $t('home.text2') }}</span>
         </h2>
-        <h3 class="hero__subtitle">New York City</h3>
-        <a class="button" href="#">Take Me There</a>
+        <h3 class="hero__subtitle">{{ $t('home.small_text') }}</h3>
+        <a class="button" href="#">{{ $t('home.register') }}</a>
       </div>
     </div>
   </div>
@@ -191,6 +195,8 @@ export default {
 <style lang="scss" rel="stylesheet/scss">
 @import url(https://fonts.googleapis.com/css?family=Poppins:400);
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,200);
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+@import url(https://fonts.googleapis.com/css?family=Lalezar);
 
 %flex-center {
   display: flex;
@@ -212,6 +218,11 @@ $side-padding: 40px;
 body {
   margin: 0;
   height: 100vh;
+}
+
+.homepage {
+  margin: 0;
+  height: 100vh;
   min-height: 500px;
   background-color: $dark;
   color: $light;
@@ -222,25 +233,53 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+._title{
+  font-size: 75px;
+  font-family: 'Lalezar', cursive;
+  color: #fff;
+}
+
 .button {
   position: relative;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  color: orange;
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid $light;
-  padding: 8px 30px;
+  border: 1px solid #f5f2ed;
+  padding: 6px 25px;
+  background-color: #1d1d1b;
+}
+
+.button:hover {
+  position: relative;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #f5f2ed;
+  padding: 6px 25px;
+  background-color: #1d1d1b;
 }
 
 .mastercard {
-  @extend %flex-center;
+  position: absolute;
+  margin-top: 20vh;
 }
 
 .mastercard__part {
-  width: $part-size;
-  height: $part-size;
-  border-radius: 50%;
+  width: fit-content;
+  margin: auto;
 
   &.red {
-    background-color: $red;
+    color: orange;
+    font-size: 140px;
     transform: translateX($part-size / 6);
   }
 
@@ -253,7 +292,6 @@ a {
 }
 
 .mastercard__copy {
-  overflow: hidden;
   padding-left: 0.2em;
 
   .letter {
@@ -279,7 +317,7 @@ a {
 }
 
 .header__logo {
-  margin: 0;
+  margin: auto;
   font-size: 1.1em;
   font-weight: normal;
   letter-spacing: 0.1em;
@@ -328,9 +366,11 @@ a {
 
 .hero__strap {
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   z-index: 5;
-  padding: $side-padding $side-padding * 2;
+  padding: 60px 20px;
+  right: 20px;
+  width: fit-content;
 }
 
 .hero__title {
