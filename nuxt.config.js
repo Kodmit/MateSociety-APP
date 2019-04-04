@@ -16,6 +16,10 @@ module.exports = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
+  router: {
+    middleware: 'i18n'
+  },
+
   /*
    ** Customize the progress-bar color
    */
@@ -33,7 +37,9 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/i18n.js'
+  ],
 
   /*
    ** Nuxt.js modules
@@ -56,6 +62,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    vendor: ['vue-i18n'],
     postcss: {
       preset: {
         features: {
@@ -75,7 +82,7 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
           options : {
-            fix : false
+            fix : true
           }
         })
       }

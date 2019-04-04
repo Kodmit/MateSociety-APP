@@ -14,10 +14,10 @@
       </h1>
 
       <div class="nav">
-        <a class="nav__item" href="#">Cities</a>
-        <a class="nav__item" href="#">Courses</a>
-        <a class="nav__item" href="#">Surprises</a>
-        <a class="nav__item" href="#">Sign In</a>
+        <a class="nav__item" href="#">{{ $t('home.concept') }}</a>
+        <a class="nav__item" href="#">{{ $t('home.contact') }}</a>
+        <a class="nav__item" href="#">{{ $t('home.login') }}</a>
+        <LangSwitcher />
       </div>
     </div>
 
@@ -41,9 +41,13 @@
 
 <script>
   /* eslint-disable */
+  import LangSwitcher from '~/components/LangSwitcher.vue'
 export default {
   name: 'Index',
   layout: 'NoNavbar',
+  components: {
+    LangSwitcher
+  },
   head() {
     return {
       script: [
