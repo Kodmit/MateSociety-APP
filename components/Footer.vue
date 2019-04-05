@@ -36,6 +36,11 @@ export default {
 
     a {
       margin-right: 15px;
+      color: #fff;
+    }
+
+    a:hover {
+      color: orange;
     }
   }
 }
