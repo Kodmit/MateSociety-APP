@@ -41,9 +41,15 @@
           Indentifiants incorrects.
         </p>
       </form>
-      <a class="forgot-password" href="">Mot de passe oublié ?</a>
 
-      <a href="" class="register">Créer un compte</a>
+      <nuxt-link class="forgot-password" :to="{ path: '/forgot_password' }"
+        >Mot de passe oublié ?</nuxt-link
+      >
+
+      <nuxt-link class="register" :to="{ path: '/register' }"
+        >Créer un compte</nuxt-link
+      >
+
       <nuxt-link class="back_link" :to="{ path: '/' }">
         <i class="far fa-arrow-left"></i>
       </nuxt-link>
