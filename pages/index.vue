@@ -37,7 +37,7 @@
           <span class="js-letters">{{ $t('home.text2') }}</span>
         </h2>
         <h3 class="hero__subtitle">{{ $t('home.small_text') }}</h3>
-        <a class="button" href="#">{{ $t('home.register') }}</a>
+        <nuxt-link class="button" :to="{ path: '/register' }">{{ $t('home.register') }}</nuxt-link>
       </div>
     </div>
   </div>

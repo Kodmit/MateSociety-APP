@@ -129,10 +129,14 @@ $dark: #1d1d1b;
   left: 0px;
   color: #fff;
 
+  form {
+    margin-top: 40px;
+  }
+
   ._container {
     margin: auto;
     width: 500px;
-    background-color: #404040;
+    background-color: #272727;
     height: 100%;
     padding: 20px;
   }
