@@ -42,7 +42,7 @@ module.exports = {
    */
   plugins: [
     '~/plugins/i18n.js',
-    '~/plugins/vuelidate.js',
+    '~/plugins/vuelidate.js'
   ],
 
   /*
