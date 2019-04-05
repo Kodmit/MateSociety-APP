@@ -5,12 +5,12 @@
       <span class="subtitle">
         Pour poser vos questions, ou juste discuter...
       </span>
-
       <form class="form">
-        <p :class="{ 'fld-error': $v.form.name.$error }">
-          <label>Votre nom</label>
+        <div class="field" :class="{ 'fld-error': $v.form.name.$error }">
+          <label class="label">Votre nom</label>
           <input
             v-model.trim="form.name"
+            class="input _input"
             type="text"
             @input="$v.form.name.$touch()"
           />
@@ -24,11 +24,11 @@
               {{ $v.form.name.$params.minLength.min }} lettres.</small
             >
           </span>
-        </p>
+        </div>
 
-        <div :class="{ 'fld-error': $v.form.email.$error }">
-          <label>Adresse e-mail</label><br />
-          <input v-model="form.email" type="text" />
+        <div class="field" :class="{ 'is-danger': $v.form.email.$error }">
+          <label class="label">Adresse e-mail</label>
+          <input v-model="form.email" class="input _input" type="text" />
 
           <span v-if="!$v.form.email.required" class="msg-error">
             <small>L'email est requis</small>
@@ -38,9 +38,13 @@
           </div>
         </div>
 
-        <div :class="{ 'fld-error': $v.form.message.$error }">
-          <label>Votre message</label><br />
-          <textarea v-model="form.message" type="text"></textarea>
+        <div class="field" :class="{ 'fld-error': $v.form.message.$error }">
+          <label class="label">Votre message</label>
+          <textarea
+            v-model="form.message"
+            class="textarea _input"
+            type="text"
+          ></textarea>
 
           <span v-if="!$v.form.message.required" class="msg-error">
             <small>Vous devez entrer un message</small>
@@ -49,6 +53,7 @@
 
         <p>
           <button
+            class="button is-link"
             type="submit"
             :disabled="$v.form.$invalid"
             @click.prevent="submitForm"
@@ -62,15 +67,25 @@
         <i class="far fa-arrow-left"></i>
       </nuxt-link>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Footer from '~/components/Footer.vue'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 export default {
   name: 'Contact',
   layout: 'NoNavbar',
+  components: {
+    Footer
+  },
+  head() {
+    return {
+      title: 'Contactez-nous'
+    }
+  },
   data() {
     return {
       form: {
@@ -92,7 +107,7 @@ export default {
       },
       message: {
         required,
-        minLength: minLength(4)
+        minLength: minLength(5)
       }
     }
   },
@@ -100,11 +115,12 @@ export default {
     submitForm() {
       const contactFormData = new FormData()
       contactFormData.set('name', this.form.name)
-      contactFormData.set('job', this.form.job)
+      contactFormData.set('email', this.form.email)
+      contactFormData.set('message', this.form.message)
 
       axios({
         method: 'post',
-        url: 'https://reqres.in/api/users',
+        url: '',
         data: contactFormData
       })
         .then(function(response) {
@@ -151,10 +167,24 @@ $dark: #1d1d1b;
     font-size: 18px;
   }
 
-  .text {
+  .form {
     width: 550px;
     margin: auto;
     line-height: 30px;
+  }
+
+  ._input {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  ._input:focus {
+    border-color: orange;
+    box-shadow: none;
+  }
+
+  .label {
+    color: #fff;
   }
 
   p {
