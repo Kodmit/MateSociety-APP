@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
         <img
@@ -23,7 +23,7 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navBar" class="navbar-menu">
       <div class="navbar-start">
         <nuxt-link class="navbar-item" :to="{ path: '/' }">Home</nuxt-link>
         <div class="navbar-item has-dropdown is-hoverable">
@@ -50,14 +50,22 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Mon compte
+          </a>
+
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item">
+              Mon profil
             </a>
-            <nuxt-link class="button is-light" :to="{ path: '/login' }">
-              Log in
-            </nuxt-link>
+            <a class="navbar-item">
+              Paramètres
+            </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item">
+              Déconnexion
+            </a>
           </div>
         </div>
       </div>

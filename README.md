@@ -1,6 +1,6 @@
-# test
+# Mate Society
 
-> My shining Nuxt.js project
+> Fin a group of mates in your area // FRONT
 
 ## Build Setup
 
