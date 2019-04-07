@@ -54,10 +54,6 @@ export default {
   },
   head() {
     return {
-      script: [
-        { src: 'https://code.jquery.com/jquery-2.2.4.min.js' },
-        { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js' }
-      ],
       title: 'Home'
     }
   },

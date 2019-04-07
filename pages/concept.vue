@@ -1,5 +1,6 @@
 <template>
   <div class="concept">
+    <LangSwitcher />
     <div class="container">
       <div class="title">Le concept</div>
       <div class="text">
@@ -32,9 +33,13 @@
 </template>
 
 <script>
+import LangSwitcher from '~/components/LangSwitcher.vue'
 export default {
   name: 'Concept',
   layout: 'NoNavbar',
+  components: {
+    LangSwitcher
+  },
   head() {
     return {
       title: 'Le concept'
