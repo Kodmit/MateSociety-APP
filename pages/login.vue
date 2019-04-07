@@ -116,12 +116,19 @@ export default {
 }
 </script>
 
+<style>
+body {
+  background-color: #1d1d1b;
+}
+</style>
+
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Oswald|Raleway|Roboto|Roboto+Condensed');
 $dark: #1d1d1b;
 
 .login {
   background-color: $dark;
+  z-index: 11;
   position: absolute;
   bottom: 0px;
   top: 0px;

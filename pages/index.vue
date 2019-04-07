@@ -192,6 +192,12 @@ export default {
 }
 </script>
 
+<style>
+  body {
+    background-color: #1d1d1b;
+  }
+</style>
+
 <style lang="scss" rel="stylesheet/scss">
 @import url(https://fonts.googleapis.com/css?family=Poppins:400);
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,200);
