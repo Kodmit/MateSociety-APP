@@ -110,17 +110,14 @@ export default {
   },
   head() {
     return {
-      title: 'Login'
+      title: 'Login',
+      bodyAttrs: {
+        class: 'front-bg'
+      }
     }
   }
 }
 </script>
-
-<style>
-body {
-  background-color: #1d1d1b;
-}
-</style>
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Oswald|Raleway|Roboto|Roboto+Condensed');
