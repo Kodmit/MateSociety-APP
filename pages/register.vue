@@ -113,6 +113,7 @@ export default {
   name: 'Register',
   components: { Footer },
   layout: 'NoNavbar',
+  middleware: 'notAuthenticated',
   head() {
     return {
       title: 'Inscription',

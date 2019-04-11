@@ -61,12 +61,15 @@
 <script>
 import { required, minLength } from 'vuelidate/lib/validators'
 import Swal from 'sweetalert2'
+import Cookie from 'js-cookie'
+import axios from 'axios'
 import Footer from '../components/Footer'
 
 export default {
   name: 'Login',
   components: { Footer },
   layout: 'NoNavbar',
+  middleware: 'notAuthenticated',
   data() {
     return {
       username: '',
@@ -87,24 +90,45 @@ export default {
   methods: {
     submit() {
       this.$v.$touch()
+      const self = this
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
       } else {
-        // do your submit logic here
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          // this.submitStatus = 'OK'
-
-          // or
-
-          this.submitStatus = 'BAD_IDS'
-          Swal.fire({
-            title: 'Attention',
-            text: 'Vos identifiants sont incorrects.',
-            type: 'error',
-            confirmButtonText: 'Fermer'
+        self.submitStatus = 'PENDING'
+        axios
+          .post('http://localhost:8000/api/login_check', {
+            username: this.username,
+            password: this.password
           })
-        }, 500)
+          .then(function(response) {
+            if (response.data.token) {
+              self.submitStatus = 'OK'
+              const auth = {
+                accessToken: response.data.token
+              }
+              self.$store.commit('update', auth)
+              Cookie.set('auth', auth)
+              self.$router.push('/dashboard')
+            }
+          })
+          .catch(function(error) {
+            self.submitStatus = 'BAD_IDS'
+            if (error.response.status === 401) {
+              Swal.fire({
+                title: 'Attention',
+                text: 'Vos identifiants sont incorrects.',
+                type: 'warning',
+                confirmButtonText: 'Fermer'
+              })
+            } else {
+              Swal.fire({
+                title: 'Erreur',
+                text: 'Une erreur est survenue sur notre serveur.',
+                type: 'error',
+                confirmButtonText: 'Fermer'
+              })
+            }
+          })
       }
     }
   },

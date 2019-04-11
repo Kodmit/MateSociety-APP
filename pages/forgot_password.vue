@@ -50,6 +50,7 @@ export default {
   name: 'ForgotPassword',
   components: { Footer },
   layout: 'NoNavbar',
+  middleware: 'notAuthenticated',
   head() {
     return {
       title: 'Mot de passe oublié',
