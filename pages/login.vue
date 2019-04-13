@@ -104,7 +104,8 @@ export default {
             if (response.data.token) {
               self.submitStatus = 'OK'
               const auth = {
-                accessToken: response.data.token
+                accessToken: response.data.token,
+                username: this.username
               }
               self.$store.commit('update', auth)
               Cookie.set('auth', auth)
@@ -113,20 +114,23 @@ export default {
           })
           .catch(function(error) {
             self.submitStatus = 'BAD_IDS'
-            if (error.response.status === 401) {
-              Swal.fire({
-                title: 'Attention',
-                text: 'Vos identifiants sont incorrects.',
-                type: 'warning',
-                confirmButtonText: 'Fermer'
-              })
-            } else {
-              Swal.fire({
-                title: 'Erreur',
-                text: 'Une erreur est survenue sur notre serveur.',
-                type: 'error',
-                confirmButtonText: 'Fermer'
-              })
+            console.log(error)
+            if (error.response) {
+              if (error.response.status === 401) {
+                Swal.fire({
+                  title: 'Attention',
+                  text: 'Vos identifiants sont incorrects.',
+                  type: 'warning',
+                  confirmButtonText: 'Fermer'
+                })
+              } else {
+                Swal.fire({
+                  title: 'Erreur',
+                  text: 'Une erreur est survenue sur notre serveur.',
+                  type: 'error',
+                  confirmButtonText: 'Fermer'
+                })
+              }
             }
           })
       }

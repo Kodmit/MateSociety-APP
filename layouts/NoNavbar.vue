@@ -10,8 +10,8 @@
       <nuxt-link class="link" :to="{ path: '/contact' }">{{
         $t('home.contact')
       }}</nuxt-link>
-      <nuxt-link class="link" :to="{ path: '/login' }">{{
-        $t('home.login')
+      <nuxt-link class="link" :to="{ path: '/register' }">{{
+        $t('home.register')
       }}</nuxt-link>
     </div>
 
