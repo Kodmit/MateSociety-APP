@@ -32,8 +32,10 @@ const createStore = () => {
       nuxtServerInit({ commit }, { req }) {
         let accessToken = null
         if (req.headers.cookie) {
-          const parsed = cookieparser.parse(req.headers.cookie)
-          accessToken = JSON.parse(parsed.auth)
+          if (req.headers.cookie !== 'locale=fr') {
+            const parsed = cookieparser.parse(req.headers.cookie)
+            accessToken = JSON.parse(parsed.auth)
+          }
         }
         commit('update', accessToken)
       }

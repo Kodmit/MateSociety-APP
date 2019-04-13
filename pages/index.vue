@@ -17,7 +17,7 @@
           </section>
         </div>
         <div class="column">
-          <section class="login">
+          <section v-if="!this.$store.state.auth" class="login">
             <span class="title">Bonjour.</span>
             <span class="subtitle">Connectez-vous ou <a href="">créez un compte</a> gratuitement.</span>
 
@@ -62,8 +62,16 @@
                   Merci de remplir correctement le formulaire
                 </p>
               </form>
-
             </div>
+          </section>
+          <section v-else class="login">
+            <span class="title">Bonjour.</span>
+            <span class="subtitle">
+              Vous êtes déjà connecté(e), {{ this.$store.state.auth.username }}.<br>
+              <nuxt-link :to="{ path: '/dashboard' }" class="register">Accéder au panel</nuxt-link>
+              <br><br>
+              <nuxt-link :to="{ path: '/logout' }" class="register">Déconnexion</nuxt-link>
+            </span>
           </section>
         </div>
       </div>
@@ -91,7 +99,7 @@ export default {
     return {
       username: '',
       password: '',
-      submitStatus: null
+      submitStatus: ''
     }
   },
   validations: {
@@ -122,7 +130,7 @@ export default {
               self.submitStatus = 'OK'
               const auth = {
                 accessToken: response.data.token,
-                username: this.username
+                username: self.username
               }
               self.$store.commit('update', auth)
               Cookie.set('auth', auth)
@@ -131,17 +139,27 @@ export default {
           })
           .catch(function(error) {
             self.submitStatus = 'BAD_IDS'
-            if (error.response.status === 401) {
-              Swal.fire({
-                title: 'Attention',
-                text: 'Vos identifiants sont incorrects.',
-                type: 'warning',
-                confirmButtonText: 'Fermer'
-              })
-            } else {
+            if(error.response.status){
+              if (error.response.status === 401) {
+                Swal.fire({
+                  title: 'Attention',
+                  text: 'Vos identifiants sont incorrects.',
+                  type: 'warning',
+                  confirmButtonText: 'Fermer'
+                })
+              } else {
+                Swal.fire({
+                  title: 'Erreur',
+                  text: 'Une erreur est survenue sur notre serveur.',
+                  type: 'error',
+                  confirmButtonText: 'Fermer'
+                })
+              }
+            }
+            else{
               Swal.fire({
                 title: 'Erreur',
-                text: 'Une erreur est survenue sur notre serveur.',
+                text: 'Une erreur inconnue est survenue.',
                 type: 'error',
                 confirmButtonText: 'Fermer'
               })

@@ -297,4 +297,120 @@ a:hover {
   display: block;
 }
 
+.register-page {
+  background-color: #EFF0F9;
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  color: #fff;
+}
+.register-page .wlc-text {
+  color: #222F47;
+}
+.register-page .wlc-text img {
+  margin-top: 7vh;
+}
+.register-page .wlc-text .text {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  display: block;
+  width: 95%;
+  font-size: 20px;
+  margin-top: 8vh;
+}
+.register-page .content {
+  width: 80%;
+  margin: auto;
+  height: 100%;
+}
+.register-page form {
+  margin-top: 40px;
+}
+.register-page ._container {
+  float: left;
+  width: 85%;
+  background-color: #222F47;
+  height: 100%;
+  padding: 20px;
+}
+.register-page .title {
+  margin-top: 45px;
+  font-family: "Montserrat", sans-serif;
+  color: #EFF0F9;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 5px;
+}
+.register-page .subtitle {
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  font-weight: 200;
+  text-align: center;
+  display: block;
+  font-size: 18px;
+}
+.register-page .form {
+  width: 550px;
+  margin: auto;
+  line-height: 30px;
+}
+.register-page ._input {
+  background-color: transparent;
+  color: #fff;
+}
+.register-page .form_error {
+  color: #e40012;
+  text-align: center;
+}
+.register-page ._input:focus {
+  border-color: orange;
+  box-shadow: none;
+}
+.register-page .input[disabled] {
+  background-color: #888888 !important;
+  border-color: #868686;
+  box-shadow: none;
+  color: #dedede !important;
+}
+.register-page ._button {
+  background-color: #7CE7FF;
+  margin-top: 20px;
+  color: #222F47;
+}
+.register-page ._button[disabled] {
+  background-color: rgba(124, 231, 255, 0.36);
+  color: #222F47;
+  box-shadow: none;
+  cursor: default;
+}
+.register-page .label {
+  color: #fff;
+}
+.register-page p {
+  margin-top: 15px;
+}
+.register-page .register {
+  color: orange;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 85px;
+  background-color: #000000;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+.register-page .back_link {
+  font-size: 25px;
+  margin-top: 100px;
+  color: #7CE7FF;
+  margin-right: auto;
+  margin-left: auto;
+  width: fit-content;
+  display: block;
+}
+
 /*# sourceMappingURL=front.css.map */

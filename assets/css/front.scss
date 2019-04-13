@@ -350,3 +350,139 @@ a {
     display: block;
   }
 }
+
+.register-page {
+  background-color: $grey;
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  color: #fff;
+
+  .wlc-text {
+    color: $dark;
+
+    img {
+      margin-top: 7vh;
+    }
+
+    .text {
+      font-family: "Raleway", sans-serif;
+      text-align: center;
+      display: block;
+      width: 95%;
+      font-size: 20px;
+      margin-top: 8vh;
+    }
+  }
+
+  .content {
+    width: 80%;
+    margin: auto;
+    height: 100%;
+  }
+
+  form {
+    margin-top: 40px;
+  }
+
+  ._container {
+    float: left;
+    width: 85%;
+    background-color: $dark;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .title {
+    margin-top: 45px;
+    font-family: 'Montserrat', sans-serif;
+    color: $grey;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 200;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+
+  .subtitle {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    font-weight: 200;
+    text-align: center;
+    display: block;
+    font-size: 18px;
+  }
+
+  .form {
+    width: 550px;
+    margin: auto;
+    line-height: 30px;
+  }
+
+  ._input {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .form_error {
+    color: #e40012;
+    text-align: center;
+  }
+
+  ._input:focus {
+    border-color: orange;
+    box-shadow: none;
+  }
+
+  .input[disabled] {
+    background-color: #888888 !important;
+    border-color: #868686;
+    box-shadow: none;
+    color: #dedede !important;
+  }
+
+  ._button{
+    background-color: $blue2;
+    margin-top: 20px;
+    color: $dark;
+  }
+
+  ._button[disabled]{
+    background-color: rgba(124, 231, 255, 0.36);
+    color: $dark;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  .label {
+    color: #fff;
+  }
+
+  p {
+    margin-top: 15px;
+  }
+
+  .register {
+    color: orange;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 85px;
+    background-color: #000000;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .back_link {
+    font-size: 25px;
+    margin-top: 100px;
+    color: $blue2;
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
+    display: block;
+  }
+
+}
