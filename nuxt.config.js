@@ -15,8 +15,6 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
-      { src: 'https://code.jquery.com/jquery-2.2.4.min.js', defer: true },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js', defer: true },
       { src: '/js/fontawesome.js' }
     ],
   },

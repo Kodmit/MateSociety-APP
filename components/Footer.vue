@@ -1,6 +1,6 @@
 <template>
   <div class="_footer">
-    <div class="title">Mate Society</div>
+    <img src="images/logo_footer.png" />
     <div class="social">
       <a target="_blank" href=""><i class="fab fa-facebook-f"></i></a>
       <a target="_blank" href=""><i class="fab fa-twitter"></i></a>
@@ -15,7 +15,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Lalezar');
+$dark: #222f47;
+$blue1: #0079c2;
+$blue2: #7ce7ff;
+$grey: #eff0f9;
+$white: #ffffff;
 
 ._footer {
   position: absolute;
@@ -23,12 +27,8 @@ export default {
   padding: 15px;
   width: 100%;
 
-  .title {
-    font-size: 30px;
-    color: #989898;
-    margin-top: 20px;
-    display: inline;
-    font-family: 'Lalezar', cursive;
+  img {
+    width: 200px;
   }
 
   .social {
@@ -36,11 +36,11 @@ export default {
 
     a {
       margin-right: 15px;
-      color: #fff;
+      color: $dark;
     }
 
     a:hover {
-      color: orange;
+      color: $blue1;
     }
   }
 }

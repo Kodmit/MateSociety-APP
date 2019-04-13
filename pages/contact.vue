@@ -1,71 +1,63 @@
 <template>
   <div class="contact">
-    <div class="container">
-      <div class="title">Contactez-nous !</div>
-      <span class="subtitle">
-        Pour poser vos questions, ou juste discuter...
-      </span>
-      <form class="form">
-        <div class="field" :class="{ 'fld-error': $v.form.name.$error }">
-          <label class="label">Votre nom</label>
-          <input
-            v-model.trim="form.name"
-            class="input _input"
-            type="text"
-            @input="$v.form.name.$touch()"
-          />
+    <div class="band">
+      <div class="container">
+        <div class="title">Contactez-nous !</div>
+        <div class="form">
+          <form>
+            <div class="fields" :class="{ 'fld-error': $v.form.name.$error }">
+              <label class="label">Votre nom</label>
+              <input
+                v-model.trim="form.name"
+                type="text"
+                @input="$v.form.name.$touch()"
+              />
 
-          <span v-if="!$v.form.name.required" class="msg-error">
-            <small>Ce champs est obligatoire</small>
-          </span>
-          <span v-if="!$v.form.name.minLength" class="msg-error">
-            <small
-              >Le champs doit faire plus de
-              {{ $v.form.name.$params.minLength.min }} lettres.</small
+              <span v-if="!$v.form.name.minLength" class="msg-error">
+                <small
+                  >Le champs doit faire plus de
+                  {{ $v.form.name.$params.minLength.min }} lettres.</small
+                >
+              </span>
+            </div>
+
+            <div class="fields" :class="{ 'is-danger': $v.form.email.$error }">
+              <label class="label">Adresse e-mail</label>
+              <input v-model="form.email" type="text" />
+
+              <div v-if="!$v.form.email.email" class="msg-error">
+                L'email n'est pas valide
+              </div>
+            </div>
+
+            <div
+              class="fields"
+              :class="{ 'fld-error': $v.form.message.$error }"
             >
-          </span>
+              <label class="label">Votre message</label>
+              <textarea
+                v-model="form.message"
+                rows="5"
+                class="_textarea"
+                type="text"
+              ></textarea>
+            </div>
+
+            <button
+              class="_button"
+              type="submit"
+              :disabled="$v.form.$invalid"
+              @click.prevent="submitForm"
+            >
+              Envoyer
+            </button>
+          </form>
         </div>
 
-        <div class="field" :class="{ 'is-danger': $v.form.email.$error }">
-          <label class="label">Adresse e-mail</label>
-          <input v-model="form.email" class="input _input" type="text" />
-
-          <span v-if="!$v.form.email.required" class="msg-error">
-            <small>L'email est requis</small>
-          </span>
-          <div v-if="!$v.form.email.email" class="msg-error">
-            L'email n'est pas valide
-          </div>
-        </div>
-
-        <div class="field" :class="{ 'fld-error': $v.form.message.$error }">
-          <label class="label">Votre message</label>
-          <textarea
-            v-model="form.message"
-            class="textarea _input"
-            type="text"
-          ></textarea>
-
-          <span v-if="!$v.form.message.required" class="msg-error">
-            <small>Vous devez entrer un message</small>
-          </span>
-        </div>
-
-        <p>
-          <button
-            class="button is-link"
-            type="submit"
-            :disabled="$v.form.$invalid"
-            @click.prevent="submitForm"
-          >
-            Envoyer
-          </button>
-        </p>
-      </form>
-
-      <nuxt-link class="back_link" :to="{ path: '/' }">
-        <i class="far fa-arrow-left"></i>
-      </nuxt-link>
+        <nuxt-link class="back_link" :to="{ path: '/' }">
+          <i class="far fa-arrow-left"></i>
+        </nuxt-link>
+      </div>
     </div>
     <Footer />
   </div>
@@ -137,71 +129,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Oswald|Raleway|Roboto|Roboto+Condensed');
-$dark: #1d1d1b;
-
-.contact {
-  background-color: $dark;
-  position: absolute;
-  bottom: 0px;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  color: #fff;
-
-  .title {
-    margin-top: 45px;
-    font-family: 'Oswald', sans-serif;
-    color: orange;
-    font-size: 40px;
-    text-transform: uppercase;
-    font-weight: 200;
-    text-align: center;
-    letter-spacing: 5px;
-  }
-
-  .subtitle {
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
-    font-weight: 200;
-    text-align: center;
-    display: block;
-    font-size: 18px;
-  }
-
-  .form {
-    width: 550px;
-    margin: auto;
-    line-height: 30px;
-  }
-
-  ._input {
-    background-color: transparent;
-    color: #fff;
-  }
-
-  ._input:focus {
-    border-color: orange;
-    box-shadow: none;
-  }
-
-  .label {
-    color: #fff;
-  }
-
-  p {
-    margin-top: 15px;
-  }
-
-  .back_link {
-    font-size: 25px;
-    margin-top: 30px;
-    color: orange;
-    margin-right: auto;
-    margin-left: auto;
-    width: fit-content;
-    display: block;
-  }
-}
-</style>
+<style src="@/assets/css/front.css"></style>

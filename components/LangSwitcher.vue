@@ -37,9 +37,12 @@ export default {
 <style>
 .language-switcher {
   display: flex;
-  padding: 1rem;
   z-index: 99999;
-  position: absolute;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  margin-bottom: -25px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 .languages {
   display: flex;
