@@ -1,29 +1,38 @@
 <template>
-  <div class="login">
+  <div class="login-page">
     <div class="_container">
       <div class="title">Connexion</div>
-      <form @submit.prevent="submit">
-        <div class="field" :class="{ 'form-group--error': $v.username.$error }">
+      <form class="form" @submit.prevent="submit">
+        <p v-if="submitStatus === 'ERROR'" class="form_error">
+          Merci de remplir correctement le formulaire
+        </p>
+        <p v-if="submitStatus === 'BAD_IDS'" class="form_error">
+          Indentifiants incorrects.
+        </p>
+        <div
+          class="fields"
+          :class="{ 'form-group--error': $v.username.$error }"
+        >
           <label class="label">Nom d'utilisateur</label>
           <input
             v-model.trim="$v.username.$model"
             :disabled="submitStatus === 'PENDING'"
-            class="input _input"
           />
         </div>
 
-        <div class="field" :class="{ 'form-group--error': $v.password.$error }">
+        <div
+          class="fields"
+          :class="{ 'form-group--error': $v.password.$error }"
+        >
           <label class="label">Mot de passe</label>
           <input
             v-model.trim="$v.password.$model"
             :disabled="submitStatus === 'PENDING'"
-            class="input _input"
           />
         </div>
 
         <button
-          id="submitButton"
-          class="button is-primary is-fullwidth"
+          class="_button"
           type="submit"
           :disabled="submitStatus === 'PENDING'"
         >
@@ -34,12 +43,6 @@
             Connexion
           </span>
         </button>
-        <p v-if="submitStatus === 'ERROR'" class="form_error">
-          Merci de remplir correctement le formulaire
-        </p>
-        <p v-if="submitStatus === 'BAD_IDS'" class="form_error">
-          Indentifiants incorrects.
-        </p>
       </form>
 
       <nuxt-link class="forgot-password" :to="{ path: '/forgot_password' }"
@@ -110,12 +113,19 @@ export default {
               self.$store.commit('update', auth)
               Cookie.set('auth', auth)
               self.$router.push('/dashboard')
+            } else if (response.data.error === 'user_not_enabled') {
+              self.submitStatus = 'USER_NOT_ENABLED'
+              Swal.fire({
+                title: 'Erreur',
+                text: "Votre compte n'est pas activé.",
+                type: 'error',
+                confirmButtonText: 'Fermer'
+              })
             }
           })
           .catch(function(error) {
             self.submitStatus = 'BAD_IDS'
-            console.log(error)
-            if (error.response) {
+            if (error.response.status) {
               if (error.response.status === 401) {
                 Swal.fire({
                   title: 'Attention',
@@ -131,6 +141,13 @@ export default {
                   confirmButtonText: 'Fermer'
                 })
               }
+            } else {
+              Swal.fire({
+                title: 'Erreur',
+                text: 'Une erreur inconnue est survenue.',
+                type: 'error',
+                confirmButtonText: 'Fermer'
+              })
             }
           })
       }
@@ -147,113 +164,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Oswald|Raleway|Roboto|Roboto+Condensed');
-$dark: #1d1d1b;
-
-.login {
-  background-color: $dark;
-  z-index: 11;
-  position: absolute;
-  bottom: 0px;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  color: #fff;
-
-  form {
-    margin-top: 40px;
-  }
-
-  ._container {
-    margin: auto;
-    width: 500px;
-    background-color: #272727;
-    height: 100%;
-    padding: 20px;
-  }
-
-  .title {
-    margin-top: 45px;
-    font-family: 'Oswald', sans-serif;
-    color: orange;
-    font-size: 40px;
-    text-transform: uppercase;
-    font-weight: 200;
-    text-align: center;
-    letter-spacing: 5px;
-  }
-
-  .subtitle {
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
-    font-weight: 200;
-    text-align: center;
-    display: block;
-    font-size: 18px;
-  }
-
-  .form {
-    width: 550px;
-    margin: auto;
-    line-height: 30px;
-  }
-
-  ._input {
-    background-color: transparent;
-    color: #fff;
-  }
-
-  .form_error {
-    color: #e40012;
-    text-align: center;
-  }
-
-  ._input:focus {
-    border-color: orange;
-    box-shadow: none;
-  }
-
-  .input[disabled] {
-    background-color: #888888 !important;
-    border-color: #868686;
-    box-shadow: none;
-    color: #dedede !important;
-  }
-
-  .label {
-    color: #fff;
-  }
-
-  p {
-    margin-top: 15px;
-  }
-
-  .register {
-    color: orange;
-    border-radius: 4px;
-    padding: 10px;
-    margin-top: 85px;
-    background-color: #000000;
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  .back_link {
-    font-size: 25px;
-    margin-top: 70px;
-    color: orange;
-    margin-right: auto;
-    margin-left: auto;
-    width: fit-content;
-    display: block;
-  }
-
-  .forgot-password {
-    float: right;
-    margin-top: 10px;
-    color: #00d1b2;
-  }
-}
-</style>
+<style src="@/assets/css/front.css"></style>

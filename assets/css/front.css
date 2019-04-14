@@ -258,14 +258,6 @@ a:hover {
   margin: auto;
   line-height: 30px;
 }
-.contact ._input {
-  background-color: transparent;
-  color: #fff;
-}
-.contact ._input:focus {
-  border-color: orange;
-  box-shadow: none;
-}
 .contact .label {
   color: #fff;
 }
@@ -320,6 +312,15 @@ a:hover {
   font-size: 20px;
   margin-top: 8vh;
 }
+.register-page .terms {
+  margin-top: 10px;
+}
+.register-page .terms label {
+  font-family: "Raleway", sans-serif;
+}
+.register-page .terms a {
+  color: #7CE7FF;
+}
 .register-page .content {
   width: 80%;
   margin: auto;
@@ -366,16 +367,6 @@ a:hover {
   color: #e40012;
   text-align: center;
 }
-.register-page ._input:focus {
-  border-color: orange;
-  box-shadow: none;
-}
-.register-page .input[disabled] {
-  background-color: #888888 !important;
-  border-color: #868686;
-  box-shadow: none;
-  color: #dedede !important;
-}
 .register-page ._button {
   background-color: #7CE7FF;
   margin-top: 20px;
@@ -411,6 +402,102 @@ a:hover {
   margin-left: auto;
   width: fit-content;
   display: block;
+}
+
+.login-page {
+  background-color: #EFF0F9;
+  z-index: 11;
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  color: #fff;
+}
+.login-page form {
+  margin-top: 40px;
+}
+.login-page .form {
+  width: 460px !important;
+}
+.login-page ._container {
+  margin: auto;
+  width: 500px;
+  background-color: #222F47;
+  height: 100%;
+  padding: 20px;
+}
+.login-page .title {
+  margin-top: 45px;
+  font-family: "Montserrat", sans-serif;
+  color: #EFF0F9;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 5px;
+}
+.login-page .subtitle {
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  font-weight: 200;
+  text-align: center;
+  display: block;
+  font-size: 18px;
+}
+.login-page .form {
+  width: 550px;
+  margin: auto;
+  line-height: 30px;
+}
+.login-page ._input {
+  background-color: transparent;
+  color: #fff;
+}
+.login-page .form_error {
+  color: #e40012;
+  text-align: center;
+  font-size: 15px;
+}
+.login-page .label {
+  color: #fff;
+}
+.login-page p {
+  margin-top: 15px;
+}
+.login-page ._button {
+  background-color: #7CE7FF;
+  margin-top: 20px;
+  color: #222F47;
+}
+.login-page ._button[disabled] {
+  background-color: rgba(124, 231, 255, 0.36);
+  color: #222F47;
+  box-shadow: none;
+  cursor: default;
+}
+.login-page .register {
+  color: #EFF0F9;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 85px;
+  background-color: #0079C2;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+.login-page .back_link {
+  font-size: 25px;
+  margin-top: 70px;
+  color: #7CE7FF;
+  margin-right: auto;
+  margin-left: auto;
+  width: fit-content;
+  display: block;
+}
+.login-page .forgot-password {
+  margin-top: 10px;
+  color: #EFF0F9;
 }
 
 /*# sourceMappingURL=front.css.map */

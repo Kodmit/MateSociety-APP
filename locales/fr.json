@@ -20,9 +20,9 @@
     "email": "Adresse e-mail",
     "password": "Mot de passe",
     "password-repeat": "Répetez le mot de passe",
+    "terms": "J'accepte les conditions générales d'utilisation",
     "register-in-progress": "Inscription en cours...",
     "left-panel": {
-      "title": "Salut !",
       "text": {
         "0": "Bienvenue à toi qui veux nous rejoindre, avant de finaliser ton inscription merci de lire ces quelques lignes :",
         "1": "Cette plateforme est ouverte à toutes et à tous. Cependant celle-ci en est encore à son stade de développement, le nombre de places est donc limité pour le moment.",

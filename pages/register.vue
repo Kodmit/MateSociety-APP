@@ -79,6 +79,19 @@
               </div>
             </div>
 
+            <div class="terms" :class="{ invalid: $v.terms.$invalid }">
+              <input
+                v-model="terms"
+                type="checkbox"
+                @change="$v.terms.$touch()"
+              />
+              <label for="terms"
+                >{{ $t('register.terms') }}
+                <nuxt-link :to="{ path: '/cgu' }">(CGU)</nuxt-link></label
+              >
+              <span class="checkmark"></span>
+            </div>
+
             <button
               class="_button"
               type="submit"
@@ -126,6 +139,7 @@ export default {
       email: '',
       password: '',
       repeatPassword: '',
+      terms: '',
       submitStatus: null
     }
   },
@@ -144,6 +158,9 @@ export default {
     },
     repeatPassword: {
       sameAsPassword: sameAs('password')
+    },
+    terms: {
+      sameAs: sameAs(() => true)
     }
   },
   methods: {

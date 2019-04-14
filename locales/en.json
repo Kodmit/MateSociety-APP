@@ -13,5 +13,32 @@
   "concept": {
     "title": "The concept",
     "content": ""
+  },
+  "register": {
+    "title": "Register",
+    "username": "Username",
+    "email": "E-mail address",
+    "password": "Password",
+    "password-repeat": "Repeat password",
+    "terms": "I accept the CGU",
+    "register-in-progress": "Register in progress...",
+    "left-panel": {
+      "text": {
+        "0": "Bienvenue à toi qui veux nous rejoindre, avant de finaliser ton inscription merci de lire ces quelques lignes :",
+        "1": "Cette plateforme est ouverte à toutes et à tous. Cependant celle-ci en est encore à son stade de développement, le nombre de places est donc limité pour le moment.",
+        "2": "Nous sommes à l'écoute de vos retours via Twitter, n'hésitez pas à nous en faire part, ceux-ci sont très importants.",
+        "3": "Merci, et bienvenue"
+      }
+    },
+    "errors": {
+      "password-too-short-1": "Le mot de passe doit faire au moins",
+      "password-too-short-2": " caractères.",
+      "email-not-valid": "The e-mail is not valid.",
+      "username-too-short-1": "Le nom d'utilisateur doit faire plus de",
+      "username-too-short-2": " caractères.",
+      "password-not-equal": "Les mots de passes doivent être identiques.",
+      "username-exist": "Le nom d'utilisateur existe déjà",
+      "email-exist": "L'adresse email existe déjà"
+    }
   }
 }

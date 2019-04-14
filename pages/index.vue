@@ -19,7 +19,7 @@
         <div class="column">
           <section v-if="!this.$store.state.auth" class="login">
             <span class="title">Bonjour.</span>
-            <span class="subtitle">Connectez-vous ou <a href="">créez un compte</a> gratuitement.</span>
+            <span class="subtitle">Connectez-vous ou <nuxt-link :to="{ path: '/register' }">créez un compte</nuxt-link> gratuitement.</span>
 
             <div class="form">
 
@@ -27,6 +27,9 @@
 
                 <p v-if="submitStatus === 'BAD_IDS'" class="form_error">
                   Indentifiants incorrects.
+                </p>
+                <p v-if="submitStatus === 'USER_NOT_ENABLED'" class="form_error">
+                  Votre compte n'est pas activé.
                 </p>
                 <div class="fields" :class="{ 'form-group--error': $v.username.$error }">
                   <label class="label">Votre identifiant</label>
@@ -135,6 +138,15 @@ export default {
               self.$store.commit('update', auth)
               Cookie.set('auth', auth)
               self.$router.push('/dashboard')
+            }
+            else if(response.data.error === "user_not_enabled"){
+              self.submitStatus = 'USER_NOT_ENABLED'
+              Swal.fire({
+                title: 'Erreur',
+                text: 'Votre compte n\'est pas activé.',
+                type: 'error',
+                confirmButtonText: 'Fermer'
+              })
             }
           })
           .catch(function(error) {

@@ -304,16 +304,6 @@ a {
     line-height: 30px;
   }
 
-  ._input {
-    background-color: transparent;
-    color: #fff;
-  }
-
-  ._input:focus {
-    border-color: orange;
-    box-shadow: none;
-  }
-
   .label {
     color: #fff;
   }
@@ -377,6 +367,17 @@ a {
     }
   }
 
+  .terms {
+    margin-top: 10px;
+    label {
+      font-family: "Raleway", sans-serif;
+    }
+
+    a{
+      color: $blue2;
+    }
+  }
+
   .content {
     width: 80%;
     margin: auto;
@@ -431,18 +432,6 @@ a {
     text-align: center;
   }
 
-  ._input:focus {
-    border-color: orange;
-    box-shadow: none;
-  }
-
-  .input[disabled] {
-    background-color: #888888 !important;
-    border-color: #868686;
-    box-shadow: none;
-    color: #dedede !important;
-  }
-
   ._button{
     background-color: $blue2;
     margin-top: 20px;
@@ -485,4 +474,115 @@ a {
     display: block;
   }
 
+}
+
+.login-page {
+  background-color: $grey;
+  z-index: 11;
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  color: #fff;
+
+  form {
+    margin-top: 40px;
+  }
+
+  .form{
+    width: 460px !important;
+  }
+
+  ._container {
+    margin: auto;
+    width: 500px;
+    background-color: $dark;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .title {
+    margin-top: 45px;
+    font-family: 'Montserrat', sans-serif;
+    color: $grey;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 200;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+
+  .subtitle {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    font-weight: 200;
+    text-align: center;
+    display: block;
+    font-size: 18px;
+  }
+
+  .form {
+    width: 550px;
+    margin: auto;
+    line-height: 30px;
+  }
+
+  ._input {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .form_error {
+    color: #e40012;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .label {
+    color: #fff;
+  }
+
+  p {
+    margin-top: 15px;
+  }
+
+  ._button{
+    background-color: $blue2;
+    margin-top: 20px;
+    color: $dark;
+  }
+
+  ._button[disabled]{
+    background-color: rgba(124, 231, 255, 0.36);
+    color: $dark;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  .register {
+    color: $grey;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 85px;
+    background-color: $blue1;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .back_link {
+    font-size: 25px;
+    margin-top: 70px;
+    color: $blue2;
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
+    display: block;
+  }
+
+  .forgot-password {
+    margin-top: 10px;
+    color: $grey;
+  }
 }
