@@ -14,6 +14,9 @@
         <div class="_container">
           <div class="title">{{ $t('register.title') }}</div>
           <form class="form" @submit.prevent="submit">
+            <p v-if="submitStatus === 'ITEM_ALREADY_EXIST'" class="form_error">
+              Le nom d'utilisateur ou l'adresse email existe déjà.
+            </p>
             <div
               class="fields"
               :class="{ 'form-group--error': $v.username.$error }"
@@ -117,8 +120,17 @@
 </template>
 
 <script>
-import { required, sameAs, minLength, email } from 'vuelidate/lib/validators'
+import {
+  required,
+  sameAs,
+  minLength,
+  maxLength,
+  email
+} from 'vuelidate/lib/validators'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 import Footer from '../components/Footer'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 export default {
   name: 'Register',
@@ -140,13 +152,14 @@ export default {
       password: '',
       repeatPassword: '',
       terms: '',
-      submitStatus: null
+      submitStatus: ''
     }
   },
   validations: {
     username: {
       required,
-      minLength: minLength(4)
+      minLength: minLength(4),
+      maxLength: maxLength(20)
     },
     email: {
       required,
@@ -168,20 +181,54 @@ export default {
       const registerFormData = new FormData()
       registerFormData.set('username', this.username)
       registerFormData.set('email', this.email)
-      registerFormData.set('password', this.password)
+      registerFormData.set('plainPassword', this.password)
+      registerFormData.set('country', '/api/countries/1')
+
+      const object = {}
+      registerFormData.forEach((value, key) => {
+        object[key] = value
+      })
+      const json = JSON.stringify(object)
+
+      const self = this
+
       this.$v.$touch()
+
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
       } else {
-        // do your submit logic here
         this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          // this.submitStatus = 'OK'
-
-          // or
-
-          this.submitStatus = 'BAD_IDS'
-        }, 11500)
+        axios({
+          method: 'post',
+          url: 'http://localhost:8000/api/users',
+          data: json
+        })
+          .then(function(response) {
+            if (response.status === 201) {
+              console.log(response.status)
+              self.$router.push('/account_created')
+            }
+          })
+          .catch(function(error) {
+            if (error.response) {
+              if (error.response.status === 400) {
+                self.submitStatus = 'ITEM_ALREADY_EXIST'
+                Swal.fire({
+                  title: 'Erreur',
+                  text: "L'adresse e-mail ou le nom d'utilisateur existe déjà.",
+                  type: 'error',
+                  confirmButtonText: 'Fermer'
+                })
+              } else {
+                Swal.fire({
+                  title: 'Erreur',
+                  text: 'Une erreur inconnue est survenue.',
+                  type: 'error',
+                  confirmButtonText: 'Fermer'
+                })
+              }
+            }
+          })
       }
     }
   }

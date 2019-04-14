@@ -500,4 +500,59 @@ a:hover {
   color: #EFF0F9;
 }
 
+.cgu-page h1 {
+  font-family: "Montserrat", sans-serif;
+  color: #222F47;
+  font-size: 30px;
+  text-align: center;
+}
+.cgu-page section {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  font-family: "Raleway", sans-serif;
+}
+.cgu-page section p {
+  font-size: 18px;
+  line-height: 35px;
+}
+.cgu-page section p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.account-created-page {
+  text-align: center;
+}
+.account-created-page .container {
+  margin-top: 10vh;
+}
+.account-created-page .fa-check {
+  font-size: 100px;
+  color: #222F47;
+}
+.account-created-page h1 {
+  margin-top: 30px;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  color: #0079C2;
+  font-size: 35px;
+  text-align: center;
+}
+.account-created-page section {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.account-created-page section p {
+  font-size: 18px;
+  line-height: 35px;
+}
+.account-created-page section a {
+  color: #0079C2;
+}
+
 /*# sourceMappingURL=front.css.map */
