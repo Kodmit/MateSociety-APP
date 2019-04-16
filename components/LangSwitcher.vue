@@ -1,6 +1,8 @@
 <template>
   <div class="language-switcher">
-    <div class="languages-label">{{ $t('lang') }}:</div>
+    <div class="languages-label">
+      {{ $t('lang') }}:
+    </div>
     <div class="languages">
       <div
         v-for="el in locales"

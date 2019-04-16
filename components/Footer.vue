@@ -1,9 +1,9 @@
 <template>
   <div class="_footer">
-    <img src="images/logo_footer.png" />
+    <img src="/images/logo_footer.png">
     <div class="social">
-      <a target="_blank" href=""><i class="fab fa-facebook-f"></i></a>
-      <a target="_blank" href=""><i class="fab fa-twitter"></i></a>
+      <a target="_blank" href=""><i class="fab fa-facebook-f" /></a>
+      <a target="_blank" href=""><i class="fab fa-twitter" /></a>
     </div>
   </div>
 </template>

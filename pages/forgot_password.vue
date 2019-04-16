@@ -1,14 +1,16 @@
 <template>
   <div class="login-page">
     <div class="_container">
-      <div class="title">Mot de passe oublié ?</div>
+      <div class="title">
+        Mot de passe oublié ?
+      </div>
       <form class="form" @submit.prevent="submit">
         <div class="fields" :class="{ 'form-group--error': $v.email.$error }">
           <label class="label">Entrez votre email</label>
           <input
             v-model.trim="$v.email.$model"
             :disabled="submitStatus === 'PENDING'"
-          />
+          >
         </div>
 
         <button
@@ -32,7 +34,7 @@
       </form>
 
       <nuxt-link class="back_link" :to="{ path: '/login' }">
-        <i class="far fa-arrow-left"></i>
+        <i class="far fa-arrow-left" />
       </nuxt-link>
     </div>
     <Footer />

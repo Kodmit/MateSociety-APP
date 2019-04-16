@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Raleway:200,300,400');
+$dark: #222F47;
+$blue1: #0079C2;
+$blue2: #7CE7FF;
+$grey: #EFF0F9;
+$white: #FFFFFF;
+
+.home {
+  margin-top: 50px;
+
+  hr {
+    background-color: $blue2;
+    height: 1px;
+  }
+
+  .welcome {
+
+    ._title {
+      font-family: "Montserrat", sans-serif;
+      font-size: 45px;
+      font-weight: 300;
+    }
+
+    .username {
+      color: $blue1;
+    }
+
+    p {
+      font-family: "Raleway", sans-serif;
+      line-height: 35px;
+      margin-top: 15px;
+
+      a {
+        color: $blue1;
+      }
+    }
+  }
+
+  .small {
+    margin-top: 40px !important;
+    width: 300px !important;
+
+    ._icon {
+      color: $blue1;
+      font-size: 50px;
+    }
+
+    .text {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+  }
+
+  .block {
+    width: 350px;
+    margin: auto;
+    text-align: center;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 1px 3px 7px 0px #828282;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .2s;
+    
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    ._icon {
+      color: $blue1;
+    }
+
+    .text {
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      margin-top: 30px;
+    }
+  }
+}
+
+.edit_profile {
+  h1 {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    margin-top: 30px;
+    font-size: 40px;
+    font-weight: 200;
+  }
+
+  .columns {
+    margin-top: 20px;
+  }
+}
+
+.form {
+
+  .form_error{
+    color: #ff6464;
+    padding: 0;
+    margin-top: -15px;
+    margin-bottom: -10px !important;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .fields {
+
+    &:not(:last-child) {
+      margin-top: 20px;
+    }
+
+    label {
+      font-family: 'Montserrat', sans-serif;
+      color: $blue1;
+      font-weight: 400;
+      padding-left: 5px;
+      font-size: 18px;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      font-size: 23px;
+      padding: 11px;
+      border-radius: 3px;
+      transition: .2s;
+      border: 0;
+      background-color: $white;
+      color: $dark;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+      &:focus {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        outline: none;
+      }
+    }
+
+  }
+
+  button {
+    background-color: $dark;
+    float: right;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 1px 3px 7px 0px #4e4e4e;
+    border-radius: 3px;
+    font-size: 21px;
+    color: $grey;
+    transition: .2s;
+    font-weight: 200;
+    cursor: pointer;
+    padding: 12px 33px;
+    margin-top: 50px;
+
+    &:hover{
+      box-shadow: none;
+    }
+  }
+
+  .reset-password {
+    margin-top: 5px;
+    display: inline-block;
+    border: 0;
+  }
+
+}

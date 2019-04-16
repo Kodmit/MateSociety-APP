@@ -553,6 +553,10 @@ a:hover {
 }
 .account-created-page section a {
   color: #0079C2;
+  font-size: 20px;
+  display: block;
+  margin-top: 25px;
+  font-weight: 300;
 }
 
 /*# sourceMappingURL=front.css.map */

@@ -2,12 +2,7 @@
   <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
-        <img
-          src="https://bulma.io/images/bulma-logo.png"
-          width="112"
-          height="28"
-          alt="Logo"
-        />
+        <img src="/images/logo.png" alt="Logo">
       </a>
 
       <a
@@ -17,15 +12,17 @@
         aria-expanded="false"
         data-target="navbarBasicExample"
       >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
       </a>
     </div>
 
     <div id="navBar" class="navbar-menu">
       <div class="navbar-start">
-        <nuxt-link class="navbar-item" :to="{ path: '/' }">Home</nuxt-link>
+        <nuxt-link class="navbar-item" :to="{ path: '/' }">
+          Home
+        </nuxt-link>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More
@@ -41,7 +38,7 @@
             <a class="navbar-item">
               Contact
             </a>
-            <hr class="navbar-divider" />
+            <hr class="navbar-divider">
             <a class="navbar-item">
               Report an issue
             </a>
@@ -62,7 +59,7 @@
             <a class="navbar-item">
               Paramètres
             </a>
-            <hr class="navbar-divider" />
+            <hr class="navbar-divider">
             <a class="navbar-item">
               Déconnexion
             </a>

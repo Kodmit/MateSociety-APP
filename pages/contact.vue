@@ -2,7 +2,9 @@
   <div class="contact">
     <div class="band">
       <div class="container">
-        <div class="title">Contactez-nous !</div>
+        <div class="title">
+          Contactez-nous !
+        </div>
         <div class="form">
           <form>
             <div class="fields" :class="{ 'fld-error': $v.form.name.$error }">
@@ -11,19 +13,17 @@
                 v-model.trim="form.name"
                 type="text"
                 @input="$v.form.name.$touch()"
-              />
+              >
 
               <span v-if="!$v.form.name.minLength" class="msg-error">
-                <small
-                  >Le champs doit faire plus de
-                  {{ $v.form.name.$params.minLength.min }} lettres.</small
-                >
+                <small>Le champs doit faire plus de
+                  {{ $v.form.name.$params.minLength.min }} lettres.</small>
               </span>
             </div>
 
             <div class="fields" :class="{ 'is-danger': $v.form.email.$error }">
               <label class="label">Adresse e-mail</label>
-              <input v-model="form.email" type="text" />
+              <input v-model="form.email" type="text">
 
               <div v-if="!$v.form.email.email" class="msg-error">
                 L'email n'est pas valide
@@ -40,7 +40,7 @@
                 rows="5"
                 class="_textarea"
                 type="text"
-              ></textarea>
+              />
             </div>
 
             <button
@@ -55,7 +55,7 @@
         </div>
 
         <nuxt-link class="back_link" :to="{ path: '/' }">
-          <i class="far fa-arrow-left"></i>
+          <i class="far fa-arrow-left" />
         </nuxt-link>
       </div>
     </div>
@@ -118,10 +118,10 @@ export default {
         url: '',
         data: contactFormData
       })
-        .then(function(response) {
+        .then(function (response) {
           // Handle success.
         })
-        .catch(function(response) {
+        .catch(function (response) {
           // Handle error.
         })
     }

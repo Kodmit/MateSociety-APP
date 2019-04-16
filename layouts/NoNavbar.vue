@@ -1,18 +1,24 @@
 <template>
   <div>
     <LangSwitcher />
-    <img class="logo" src="images/logo.png" />
+    <img class="logo" src="images/logo.png">
 
     <div class="nav">
-      <nuxt-link class="link" :to="{ path: '/concept' }">{{
-        $t('home.concept')
-      }}</nuxt-link>
-      <nuxt-link class="link" :to="{ path: '/contact' }">{{
-        $t('home.contact')
-      }}</nuxt-link>
-      <nuxt-link class="link" :to="{ path: '/register' }">{{
-        $t('home.register')
-      }}</nuxt-link>
+      <nuxt-link class="link" :to="{ path: '/concept' }">
+        {{
+          $t('home.concept')
+        }}
+      </nuxt-link>
+      <nuxt-link class="link" :to="{ path: '/contact' }">
+        {{
+          $t('home.contact')
+        }}
+      </nuxt-link>
+      <nuxt-link class="link" :to="{ path: '/register' }">
+        {{
+          $t('home.register')
+        }}
+      </nuxt-link>
     </div>
 
     <nuxt />

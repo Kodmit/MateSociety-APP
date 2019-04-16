@@ -3,7 +3,9 @@
     <LangSwitcher />
     <div class="band">
       <div class="container">
-        <div class="title">Le concept</div>
+        <div class="title">
+          Le concept
+        </div>
         <div class="text">
           <p>
             MateSociety est un projet créé par un étudiant. Le but du projet est
@@ -24,19 +26,22 @@
           </p>
         </div>
         <nuxt-link class="back_link" :to="{ path: '/' }">
-          <i class="far fa-arrow-left"></i>
+          <i class="far fa-arrow-left" />
         </nuxt-link>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import LangSwitcher from '~/components/LangSwitcher.vue'
+import Footer from '../components/Footer'
 export default {
   name: 'Concept',
   layout: 'NoNavbar',
   components: {
+    Footer,
     LangSwitcher
   },
   head() {

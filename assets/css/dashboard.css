@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Raleway:200,300,400");
+.home {
+  margin-top: 50px;
+}
+.home hr {
+  background-color: #7CE7FF;
+  height: 1px;
+}
+.home .welcome ._title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  font-weight: 300;
+}
+.home .welcome .username {
+  color: #0079C2;
+}
+.home .welcome p {
+  font-family: "Raleway", sans-serif;
+  line-height: 35px;
+  margin-top: 15px;
+}
+.home .welcome p a {
+  color: #0079C2;
+}
+.home .small {
+  margin-top: 40px !important;
+  width: 300px !important;
+}
+.home .small ._icon {
+  color: #0079C2;
+  font-size: 50px;
+}
+.home .small .text {
+  font-size: 15px;
+  font-weight: 500;
+}
+.home .block {
+  width: 350px;
+  margin: auto;
+  text-align: center;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 1px 3px 7px 0px #828282;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.home .block:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.home .block ._icon {
+  color: #0079C2;
+}
+.home .block .text {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.edit_profile h1 {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: 200;
+}
+.edit_profile .columns {
+  margin-top: 20px;
+}
+
+.form .form_error {
+  color: #ff6464;
+  padding: 0;
+  margin-top: -15px;
+  margin-bottom: -10px !important;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+}
+.form .fields:not(:last-child) {
+  margin-top: 20px;
+}
+.form .fields label {
+  font-family: "Montserrat", sans-serif;
+  color: #0079C2;
+  font-weight: 400;
+  padding-left: 5px;
+  font-size: 18px;
+}
+.form .fields textarea, .form .fields input, .form .fields select {
+  width: 100%;
+  font-size: 23px;
+  padding: 11px;
+  border-radius: 3px;
+  transition: 0.2s;
+  border: 0;
+  background-color: #FFFFFF;
+  color: #222F47;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.form .fields textarea:focus, .form .fields input:focus, .form .fields select:focus {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  outline: none;
+}
+.form button {
+  background-color: #222F47;
+  float: right;
+  border: none;
+  font-family: "Raleway", sans-serif;
+  box-shadow: 1px 3px 7px 0px #4e4e4e;
+  border-radius: 3px;
+  font-size: 21px;
+  color: #EFF0F9;
+  transition: 0.2s;
+  font-weight: 200;
+  cursor: pointer;
+  padding: 12px 33px;
+  margin-top: 50px;
+}
+.form button:hover {
+  box-shadow: none;
+}
+.form .reset-password {
+  margin-top: 5px;
+  display: inline-block;
+  border: 0;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

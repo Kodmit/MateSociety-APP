@@ -9,17 +9,17 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
-    'plugin:nuxt/recommended',
-    'plugin:prettier/recommended',
-    'prettier',
-    'prettier/vue'
-  ],
-  plugins: [
-    'prettier'
+    'plugin:nuxt/recommended'
   ],
   // add your custom rules here
   rules: {
+    'semi': "error",
     "no-console": "off",
-    'nuxt/no-cjs-in-config': 'off'
+    'nuxt/no-cjs-in-config': 'off',
+    'linebreak-style': 'off',
+    'array-bracket-newline': 'off',
+    'array-element-newline': 'off',
+    'brace-style': 'off',
+    'multiline-ternary': 'off'
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <div class="login-page">
     <div class="_container">
-      <div class="title">Connexion</div>
+      <div class="title">
+        Connexion
+      </div>
       <form class="form" @submit.prevent="submit">
         <p v-if="submitStatus === 'ERROR'" class="form_error">
           Merci de remplir correctement le formulaire
@@ -17,7 +19,7 @@
           <input
             v-model.trim="$v.username.$model"
             :disabled="submitStatus === 'PENDING'"
-          />
+          >
         </div>
 
         <div
@@ -28,7 +30,7 @@
           <input
             v-model.trim="$v.password.$model"
             :disabled="submitStatus === 'PENDING'"
-          />
+          >
         </div>
 
         <button
@@ -45,16 +47,22 @@
         </button>
       </form>
 
-      <nuxt-link class="forgot-password" :to="{ path: '/forgot_password' }"
-        >Mot de passe oublié ?</nuxt-link
+      <nuxt-link
+        class="forgot-password"
+        :to="{ path: '/forgot_password' }"
       >
+        Mot de passe oublié ?
+      </nuxt-link>
 
-      <nuxt-link class="register" :to="{ path: '/register' }"
-        >Créer un compte</nuxt-link
+      <nuxt-link
+        class="register"
+        :to="{ path: '/register' }"
       >
+        Créer un compte
+      </nuxt-link>
 
       <nuxt-link class="back_link" :to="{ path: '/' }">
-        <i class="far fa-arrow-left"></i>
+        <i class="far fa-arrow-left" />
       </nuxt-link>
     </div>
     <Footer />
@@ -99,11 +107,11 @@ export default {
       } else {
         self.submitStatus = 'PENDING'
         axios
-          .post('http://localhost:8000/api/login_check', {
+          .post('/login_check', {
             username: this.username,
             password: this.password
           })
-          .then(function(response) {
+          .then(function (response) {
             if (response.data.token) {
               self.submitStatus = 'OK'
               const auth = {
@@ -123,7 +131,7 @@ export default {
               })
             }
           })
-          .catch(function(error) {
+          .catch(function (error) {
             self.submitStatus = 'BAD_IDS'
             if (error.response.status) {
               if (error.response.status === 401) {

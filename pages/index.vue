@@ -13,7 +13,9 @@
           <section class="block_2">
             <span><span class="title">MateSociety</span> est un réseau social basé sur le sport, l'estime de soi, et la camaraderie.</span>
             <span>Rejoins un groupe de personnes près de chez toi, ou créé ton propre groupe, fixez-vous des objectifs à atteindre et lancez vous !</span>
-            <nuxt-link :to="{ path: '/register' }" class="register">Inscription</nuxt-link>
+            <nuxt-link :to="{ path: '/register' }" class="register">
+              Inscription
+            </nuxt-link>
           </section>
         </div>
         <div class="column">
@@ -22,9 +24,7 @@
             <span class="subtitle">Connectez-vous ou <nuxt-link :to="{ path: '/register' }">créez un compte</nuxt-link> gratuitement.</span>
 
             <div class="form">
-
               <form @submit.prevent="submit">
-
                 <p v-if="submitStatus === 'BAD_IDS'" class="form_error">
                   Indentifiants incorrects.
                 </p>
@@ -36,7 +36,7 @@
                   <input
                     v-model.trim="$v.username.$model"
                     :disabled="submitStatus === 'PENDING'"
-                  />
+                  >
                 </div>
 
                 <div class="fields" :class="{ 'form-group--error': $v.password.$error }">
@@ -45,21 +45,23 @@
                     v-model.trim="$v.password.$model"
                     type="password"
                     :disabled="submitStatus === 'PENDING'"
-                  />
+                  >
                 </div>
 
-                <nuxt-link class="reset-password" :to="{ path: '/forgot_password' }">Mot de passe oublié ?</nuxt-link>
+                <nuxt-link class="reset-password" :to="{ path: '/forgot_password' }">
+                  Mot de passe oublié ?
+                </nuxt-link>
 
                 <button
                   type="submit"
                   :disabled="submitStatus === 'PENDING'"
                 >
-                <span v-if="submitStatus === 'PENDING'">
-                  Connexion en cours...
-                </span>
+                  <span v-if="submitStatus === 'PENDING'">
+                    Connexion en cours...
+                  </span>
                   <span v-else>
-                  Connexion
-                </span>
+                    Connexion
+                  </span>
                 </button>
                 <p v-if="submitStatus === 'ERROR'" class="form_error">
                   Merci de remplir correctement le formulaire
@@ -84,14 +86,14 @@
 </template>
 
 <script>
-  import { required, minLength } from 'vuelidate/lib/validators'
-  import Swal from 'sweetalert2'
-  import Cookie from 'js-cookie'
-  import axios from 'axios'
-  import Footer from "../components/Footer";
+import { required, minLength } from 'vuelidate/lib/validators'
+import Swal from 'sweetalert2'
+import Cookie from 'js-cookie'
+import jwtDecode from 'jwt-decode'
+import Footer from '../components/Footer'
 export default {
   name: 'Index',
-  components: {Footer},
+  components: { Footer },
   layout: 'NoNavbar',
   head() {
     return {
@@ -123,23 +125,25 @@ export default {
         this.submitStatus = 'ERROR'
       } else {
         self.submitStatus = 'PENDING'
-        axios
-          .post('http://localhost:8000/api/login_check', {
+        this.$axios
+          .post('/login_check', {
             username: this.username,
             password: this.password
           })
-          .then(function(response) {
+          .then(function (response) {
             if (response.data.token) {
               self.submitStatus = 'OK'
+              const token = jwtDecode(response.data.token)
               const auth = {
-                accessToken: response.data.token,
-                username: self.username
+                accessToken: 'Bearer ' + response.data.token,
+                username: self.username,
+                user_id: token.id
               }
               self.$store.commit('update', auth)
               Cookie.set('auth', auth)
               self.$router.push('/dashboard')
             }
-            else if(response.data.error === "user_not_enabled"){
+            else if (response.data.error === 'user_not_enabled') {
               self.submitStatus = 'USER_NOT_ENABLED'
               Swal.fire({
                 title: 'Erreur',
@@ -149,9 +153,9 @@ export default {
               })
             }
           })
-          .catch(function(error) {
+          .catch(function (error) {
             self.submitStatus = 'BAD_IDS'
-            if(error.response.status){
+            if (error.response) {
               if (error.response.status === 401) {
                 Swal.fire({
                   title: 'Attention',
@@ -168,7 +172,7 @@ export default {
                 })
               }
             }
-            else{
+            else {
               Swal.fire({
                 title: 'Erreur',
                 text: 'Une erreur inconnue est survenue.',
