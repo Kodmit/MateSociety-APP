@@ -10,8 +10,16 @@
                 Menu
               </p>
               <ul class="menu-list">
-                <li><a>Dashboard</a></li>
-                <li><a>Modifier mon profil</a></li>
+                <li>
+                  <nuxt-link to="/dashboard">
+                    Dashboard
+                  </nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/dashboard/change_picture">
+                    Changer ma photo de profil
+                  </nuxt-link>
+                </li>
                 <li><a>Voir mon profil</a></li>
                 <li><a>Changer mon mot de passe</a></li>
               </ul>
@@ -116,14 +124,6 @@ export default {
         self.description = response.data.description
         self.countries = response.data.country['@id']
       })
-      .catch(function (error) {
-        Swal.fire({
-          title: 'Erreur',
-          text: 'Une erreur serveur est survenue. ( ' + error + ' )',
-          type: 'error',
-          confirmButtonText: 'Fermer'
-        })
-      })
   },
   methods: {
     submit() {
@@ -138,7 +138,6 @@ export default {
       registerFormData.forEach((value, key) => {
         object[key] = value
       })
-      // const json = JSON.stringify(object)
       const self = this
 
       if (this.$v.$invalid) {

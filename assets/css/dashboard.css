@@ -69,6 +69,58 @@
 .edit_profile .columns {
   margin-top: 20px;
 }
+.edit_profile .p_text {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.edit_profile .picture {
+  text-align: center;
+  padding: 20px;
+  background-color: #0079C2;
+  width: 450px;
+  margin: auto;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 3px;
+}
+.edit_profile .picture ._icon {
+  color: #EFF0F9;
+  margin-bottom: 20px;
+  font-size: 115px;
+}
+.edit_profile .picture .file {
+  width: fit-content;
+  margin: auto;
+}
+.edit_profile .picture .file-name {
+  color: #EFF0F9;
+}
+.edit_profile .picture .file-cta {
+  background-color: #EFF0F9;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.edit_profile .picture ._button {
+  background-color: #EFF0F9;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  float: none;
+  color: #222F47;
+  margin-top: 20px;
+  border: none;
+  padding: 15px 25px;
+  font-family: "Raleway", sans-serif;
+  border-radius: 3px;
+}
+.edit_profile .picture ._remove {
+  background-color: #ff6e6e;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  float: none;
+  color: #fff;
+  margin-top: 20px;
+  border: none;
+  padding: 15px 25px;
+  font-family: "Raleway", sans-serif;
+  border-radius: 3px;
+}
 
 .form .form_error {
   color: #ff6464;

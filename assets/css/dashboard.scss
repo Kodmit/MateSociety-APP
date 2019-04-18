@@ -93,6 +93,66 @@ $white: #FFFFFF;
   .columns {
     margin-top: 20px;
   }
+
+  .p_text {
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .picture {
+    text-align: center;
+    padding: 20px;
+    background-color: $blue1;
+    width: 450px;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 3px;
+
+    ._icon {
+      color: $grey;
+      margin-bottom: 20px;
+      font-size: 115px;
+    }
+
+    .file {
+      width: fit-content;
+      margin: auto;
+    }
+
+    .file-name {
+      color: $grey;
+    }
+
+    .file-cta {
+      background-color: $grey;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+
+    ._button {
+      background-color: $grey;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      float: none;
+      color: $dark;
+      margin-top: 20px;
+      border: none;
+      padding: 15px 25px;
+      font-family: "Raleway", sans-serif;
+      border-radius: 3px;
+    }
+
+    ._remove {
+      background-color: #ff6e6e;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      float: none;
+      color: #fff;
+      margin-top: 20px;
+      border: none;
+      padding: 15px 25px;
+      font-family: "Raleway", sans-serif;
+      border-radius: 3px;
+    }
+  }
 }
 
 .form {
