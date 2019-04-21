@@ -16,8 +16,8 @@
                   </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link to="/dashboard/change_picture">
-                    Changer ma photo de profil
+                  <nuxt-link to="/dashboard/edit_profile">
+                    Editer mon profil
                   </nuxt-link>
                 </li>
                 <li><a>Voir mon profil</a></li>
@@ -27,7 +27,7 @@
           </div>
           <div class="column is-8">
             <p class="p_text">
-              Les formats acceptés sont les suivants : jpg, jpeg, png
+              Les formats acceptés sont les suivants : jpg, jpeg, png. Taille maximum : 5M
             </p>
             <section class="picture">
               <div v-if="!image">
@@ -143,11 +143,11 @@ export default {
           }
           self.submitStatus = ''
         })
-        .catch(function (error) {
+        .catch(function () {
           Swal.fire({
             title: 'Erreur',
-            text: 'Une erreur est survenue ( ' + error + ' )',
-            type: 'success',
+            text: 'Une erreur est survenue, vérifiez que l\'image ne dépasse pas la taille maximale et qu\'elle est valide.',
+            type: 'error',
             confirmButtonText: 'Fermer'
           })
           self.submitStatus = ''
