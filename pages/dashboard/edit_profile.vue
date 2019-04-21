@@ -197,7 +197,7 @@ export default {
     description: {
       required,
       minLength: minLength(3),
-      maxLength: maxLength(30)
+      maxLength: maxLength(300)
     }
   }
 }

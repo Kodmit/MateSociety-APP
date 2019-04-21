@@ -36,6 +36,11 @@
                 </div>
                 <div v-else>
                   <img :src="file">
+                  <button class="_remove" @click="removeCurrentImage">
+                    Supprimer l'image
+                  </button>
+                  <br>
+                  <br>
                 </div>
                 <div class="file has-name">
                   <label class="file-label">
@@ -60,7 +65,7 @@
               <div v-else>
                 <img :src="image">
                 <button class="_remove" @click="removeImage">
-                  Supprimer l'image
+                  Choisir une autre
                 </button>
                 <button class="_button" :disabled="submitStatus === 'PENDING' || $v.$invalid" @click="submitFile()">
                   <span v-if="submitStatus === 'PENDING'">Enregistrement...</span>
@@ -101,7 +106,6 @@ export default {
     const self = this
     this.$axios.get('/users/' + this.$store.state.auth.user_id)
       .then(function (response) {
-        console.log(response.data)
         if (response.data.image) {
           self.file = 'http://localhost:8000/uploads/media/' + response.data.image.filePath
         }
@@ -121,7 +125,6 @@ export default {
       this.$axios.post('/media_objects', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
         .then(function (response) {
           if (response.status === 201) {
-            console.log(response)
             const pic = {}
             pic.image = response.data['@id']
             self.$axios.put('/users/' + self.$store.state.auth.user_id, pic)
@@ -142,12 +145,11 @@ export default {
         })
         .catch(function (error) {
           Swal.fire({
-            title: 'Succès',
-            text: 'Votre photo de profil a été enregistrée !',
+            title: 'Erreur',
+            text: 'Une erreur est survenue ( ' + error + ' )',
             type: 'success',
             confirmButtonText: 'Fermer'
           })
-          console.log(error)
           self.submitStatus = ''
         })
     },
@@ -167,6 +169,26 @@ export default {
     },
     removeImage: function (e) {
       this.image = ''
+      this.file = null
+      this.$router.push('/dashboard/change_picture')
+    },
+    removeCurrentImage: function (e) {
+      this.image = ''
+      this.file = null
+      const imageObject = {}
+      imageObject.image = null
+      this.$axios.put('/users/' + this.$store.state.auth.user_id, imageObject)
+        .then(function (response) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: 'Succès',
+              text: 'Votre photo de profil a été supprimée !',
+              type: 'success',
+              confirmButtonText: 'Fermer'
+            })
+          }
+        })
+      this.$router.push('/dashboard/change_picture')
     }
   },
   validations: {
