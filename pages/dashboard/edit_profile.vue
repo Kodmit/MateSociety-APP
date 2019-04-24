@@ -27,21 +27,38 @@
           </div>
           <div class="column is-8">
             <form class="form" @submit.prevent="submit">
-              <p v-if="submitStatus === 'ITEM_ALREADY_EXIST'" class="form_error">
+              <p
+                v-if="submitStatus === 'ITEM_ALREADY_EXIST'"
+                class="form_error"
+              >
                 Le nom d'utilisateur ou l'adresse email existe déjà.
               </p>
 
-              <div class="fields" :class="{ 'form-group--error': $v.username.$error }">
+              <div
+                class="fields"
+                :class="{ 'form-group--error': $v.username.$error }"
+              >
                 <label class="label">{{ $t('register.username') }}</label>
-                <input v-model.trim="$v.username.$model" :disabled="submitStatus === 'PENDING'">
+                <input
+                  v-model.trim="$v.username.$model"
+                  :disabled="submitStatus === 'PENDING'"
+                >
                 <span v-if="!$v.username.minLength" class="msg-error">
-                  <small>{{ $t('register.errors.username-too-short-1') }} {{ $v.username.$params.minLength.min }}{{ $t('register.errors.username-too-short-2') }}.</small>
+                  <small>{{ $t('register.errors.username-too-short-1') }}
+                    {{ $v.username.$params.minLength.min
+                    }}{{ $t('register.errors.username-too-short-2') }}.</small>
                 </span>
               </div>
 
-              <div class="fields" :class="{ 'form-group--error': $v.email.$error }">
+              <div
+                class="fields"
+                :class="{ 'form-group--error': $v.email.$error }"
+              >
                 <label class="label">{{ $t('register.email') }}</label>
-                <input v-model.trim="$v.email.$model" :disabled="submitStatus === 'PENDING'">
+                <input
+                  v-model.trim="$v.email.$model"
+                  :disabled="submitStatus === 'PENDING'"
+                >
                 <div v-if="!$v.email.email" class="msg-error">
                   <small>L'email n'est pas valide.</small>
                 </div>
@@ -50,30 +67,56 @@
               <div class="fields">
                 <label class="label">Pays</label>
 
-                <select v-model="countries" :disabled="submitStatus === 'PENDING'">
-                  <option v-for="option in options" :key="option['@id']" :value="option['@id']">
+                <select
+                  v-model="countries"
+                  :disabled="submitStatus === 'PENDING'"
+                >
+                  <option
+                    v-for="option in options"
+                    :key="option['@id']"
+                    :value="option['@id']"
+                  >
                     {{ option.name }}
                   </option>
                 </select>
               </div>
 
-              <div class="fields" :class="{ 'form-group--error': $v.city.$error }">
+              <div
+                class="fields"
+                :class="{ 'form-group--error': $v.city.$error }"
+              >
                 <label class="label">Ville</label>
-                <input v-model.trim="$v.city.$model" :disabled="submitStatus === 'PENDING'">
+                <input
+                  v-model.trim="$v.city.$model"
+                  :disabled="submitStatus === 'PENDING'"
+                >
                 <div v-if="!$v.city.maxLength" class="msg-error">
-                  <small>Le nom de la ville doit faire moins de {{ $v.city.$params.maxLength.max }} caractères.</small>
+                  <small>Le nom de la ville doit faire moins de
+                    {{ $v.city.$params.maxLength.max }} caractères.</small>
                 </div>
               </div>
 
-              <div class="fields" :class="{ 'form-group--error': $v.description.$error }">
+              <div
+                class="fields"
+                :class="{ 'form-group--error': $v.description.$error }"
+              >
                 <label class="label">Décrivez-vous !</label>
-                <textarea v-model.trim="$v.description.$model" :disabled="submitStatus === 'PENDING'" />
+                <textarea
+                  v-model.trim="$v.description.$model"
+                  :disabled="submitStatus === 'PENDING'"
+                />
                 <div v-if="!$v.description.maxLength" class="msg-error">
-                  <small>Votre description doit faire moins de {{ $v.description.$params.maxLength.max }} caractères.</small>
+                  <small>Votre description doit faire moins de
+                    {{ $v.description.$params.maxLength.max }}
+                    caractères.</small>
                 </div>
               </div>
 
-              <button class="_button" type="submit" :disabled="submitStatus === 'PENDING' || $v.$invalid">
+              <button
+                class="_button"
+                type="submit"
+                :disabled="submitStatus === 'PENDING' || $v.$invalid"
+              >
                 <span v-if="submitStatus === 'PENDING'">Enregistrement...</span>
                 <span v-else>Enregistrer</span>
               </button>
@@ -116,7 +159,8 @@ export default {
     this.$axios.get('/countries').then(function (response) {
       self.options = response.data['hydra:member']
     })
-    this.$axios.get('/users/' + this.$store.state.auth.user_id)
+    this.$axios
+      .get('/users/' + this.$store.state.auth.user_id)
       .then(function (response) {
         self.username = response.data.username
         self.email = response.data.email
@@ -144,7 +188,8 @@ export default {
         this.submitStatus = 'ERROR'
       } else {
         this.submitStatus = 'PENDING'
-        this.$axios.put('/users/' + self.$store.state.auth.user_id, object)
+        this.$axios
+          .put('/users/' + self.$store.state.auth.user_id, object)
           .then(function (response) {
             if (response.status === 200) {
               self.submitStatus = ''

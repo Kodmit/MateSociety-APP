@@ -5,19 +5,13 @@
 
     <div class="nav">
       <nuxt-link class="link" :to="{ path: '/concept' }">
-        {{
-          $t('home.concept')
-        }}
+        {{ $t('home.concept') }}
       </nuxt-link>
       <nuxt-link class="link" :to="{ path: '/contact' }">
-        {{
-          $t('home.contact')
-        }}
+        {{ $t('home.contact') }}
       </nuxt-link>
       <nuxt-link class="link" :to="{ path: '/register' }">
-        {{
-          $t('home.register')
-        }}
+        {{ $t('home.register') }}
       </nuxt-link>
     </div>
 

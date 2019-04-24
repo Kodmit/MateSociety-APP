@@ -47,17 +47,11 @@
         </button>
       </form>
 
-      <nuxt-link
-        class="forgot-password"
-        :to="{ path: '/forgot_password' }"
-      >
+      <nuxt-link class="forgot-password" :to="{ path: '/forgot_password' }">
         Mot de passe oublié ?
       </nuxt-link>
 
-      <nuxt-link
-        class="register"
-        :to="{ path: '/register' }"
-      >
+      <nuxt-link class="register" :to="{ path: '/register' }">
         Créer un compte
       </nuxt-link>
 
