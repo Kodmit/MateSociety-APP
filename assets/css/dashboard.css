@@ -264,12 +264,12 @@
   line-height: 220px;
 }
 #user_profile .quote.open {
-  top: -20px;
-  left: -30px;
+  top: -31px;
+  left: -25px;
 }
 #user_profile .quote.close {
-  bottom: -120px;
-  right: 0px;
+  bottom: -133px;
+  right: -20px;
 }
 
 /*# sourceMappingURL=dashboard.css.map */
