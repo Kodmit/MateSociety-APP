@@ -27,7 +27,8 @@
           </div>
           <div class="column is-8">
             <p class="p_text">
-              Les formats acceptés sont les suivants : jpg, jpeg, png. Taille maximum : 5M
+              Les formats acceptés sont les suivants : jpg, jpeg, png. Taille
+              maximum : 5M
             </p>
             <section class="picture">
               <div v-if="!image">
@@ -67,8 +68,14 @@
                 <button class="_remove" @click="removeImage">
                   Choisir une autre
                 </button>
-                <button class="_button" :disabled="submitStatus === 'PENDING' || $v.$invalid" @click="submitFile()">
-                  <span v-if="submitStatus === 'PENDING'">Enregistrement...</span>
+                <button
+                  class="_button"
+                  :disabled="submitStatus === 'PENDING' || $v.$invalid"
+                  @click="submitFile()"
+                >
+                  <span
+                    v-if="submitStatus === 'PENDING'"
+                  >Enregistrement...</span>
                   <span v-else>Valider</span>
                 </button>
               </div>
@@ -104,12 +111,14 @@ export default {
   },
   mounted() {
     const self = this
-    this.$axios.get('/users/' + this.$store.state.auth.user_id)
+    this.$axios
+      .get('/users/' + this.$store.state.auth.user_id)
       .then(function (response) {
         if (response.data.image) {
-          self.file = 'http://localhost:8000/uploads/media/' + response.data.image.filePath
-        }
-        else {
+          self.file =
+            'http://localhost:8000/uploads/media/' +
+            response.data.image.filePath
+        } else {
           self.file = null
         }
       })
@@ -122,12 +131,16 @@ export default {
       this.submitStatus = 'PENDING'
       const self = this
 
-      this.$axios.post('/media_objects', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      this.$axios
+        .post('/media_objects', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        })
         .then(function (response) {
           if (response.status === 201) {
             const pic = {}
             pic.image = response.data['@id']
-            self.$axios.put('/users/' + self.$store.state.auth.user_id, pic)
+            self.$axios
+              .put('/users/' + self.$store.state.auth.user_id, pic)
               .then(function (response) {
                 if (response.status === 200) {
                   self.submitStatus = ''
@@ -146,7 +159,8 @@ export default {
         .catch(function () {
           Swal.fire({
             title: 'Erreur',
-            text: 'Une erreur est survenue, vérifiez que l\'image ne dépasse pas la taille maximale et qu\'elle est valide.',
+            text:
+              "Une erreur est survenue, vérifiez que l'image ne dépasse pas la taille maximale et qu'elle est valide.",
             type: 'error',
             confirmButtonText: 'Fermer'
           })
@@ -177,7 +191,8 @@ export default {
       this.file = null
       const imageObject = {}
       imageObject.image = null
-      this.$axios.put('/users/' + this.$store.state.auth.user_id, imageObject)
+      this.$axios
+        .put('/users/' + this.$store.state.auth.user_id, imageObject)
         .then(function (response) {
           if (response.status === 200) {
             Swal.fire({
@@ -200,5 +215,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/css/dashboard.css';
+@import '@/assets/css/dashboard.css';
 </style>

@@ -180,6 +180,10 @@ export default {
       registerFormData.set('plainPassword', this.password)
       registerFormData.set('country', '/api/countries/1')
 
+      const config = {
+        headers: { 'content-type': 'application/json' }
+      }
+
       const object = {}
       registerFormData.forEach((value, key) => {
         object[key] = value
@@ -194,11 +198,7 @@ export default {
         this.submitStatus = 'ERROR'
       } else {
         this.submitStatus = 'PENDING'
-        this.$axios({
-          method: 'post',
-          url: '/users',
-          data: json
-        })
+        this.$axios.post('/users', json, config)
           .then(function (response) {
             if (response.status === 201) {
               console.log(response.status)

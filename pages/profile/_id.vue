@@ -35,7 +35,8 @@ export default {
   },
   mounted() {
     const self = this
-    this.$axios.get('/users/' + this.$route.params.id)
+    this.$axios
+      .get('/users/' + this.$route.params.id)
       .then(function (response) {
         console.log(response.data)
         self.data = response.data

@@ -37,7 +37,8 @@ const createStore = () => {
             req.headers.cookie !== 'locale=en'
           ) {
             const parsed = cookieparser.parse(req.headers.cookie)
-            accessToken = JSON.parse(parsed.auth)
+            if (parsed.auth)
+            { accessToken = JSON.parse(parsed.auth) }
           }
         }
         commit('update', accessToken)
