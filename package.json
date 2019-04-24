@@ -21,6 +21,7 @@
     "express": "^4.16.4",
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.24.0",
     "nuxt": "^2.6.1",
     "sweetalert2": "^8.8.5",
     "vue": "^2.6.10",

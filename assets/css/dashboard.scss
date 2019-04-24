@@ -261,3 +261,60 @@ $white: #FFFFFF;
     font-weight: 300;
   }
 }
+
+#user_profile {
+  .picture{
+    border-radius:100%;
+    height: 350px;
+    display: block;
+    margin: 30px auto 0px;
+    overflow:hidden;
+    width: 350px;
+  }
+
+  .username {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    display: block;
+    color: $blue1;
+    font-size: 50px;
+    font-weight: 300;
+  }
+
+  .joined {
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+    display: block;
+  }
+
+  .location {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    display: block;
+    margin: 15px;
+    font-size: 25px;
+    color: $dark;
+  }
+
+  .description {
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .wrapper {
+    margin: 25px auto;
+    width: 50%;
+    position: relative;
+    font: 28px/36px "Trebuchet MS", Helvetica, sans-serif;
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 3px;
+  }
+  .quote { z-index: 1; position: absolute; color: $blue2; font-size: 220px; line-height:220px; }
+  .quote.open { top: -20px; left: -30px; }
+  .quote.close { bottom: -120px; right: 0px; }
+}

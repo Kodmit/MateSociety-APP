@@ -36,10 +36,12 @@
       <hr>
       <div class="columns">
         <div class="column">
-          <div class="block small">
-            <i class="fal fa-user fa-5x _icon" />
-            <span class="text">Voir mon profil</span>
-          </div>
+          <nuxt-link :to="{ path: '/profile/' + this.$store.state.auth.user_id }">
+            <div class="block small">
+              <i class="fal fa-user fa-5x _icon" />
+              <span class="text">Voir mon profil</span>
+            </div>
+          </nuxt-link>
         </div>
 
         <div class="column">
