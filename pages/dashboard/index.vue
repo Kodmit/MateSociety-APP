@@ -1,37 +1,11 @@
 <template>
   <div>
     <div class="container home">
-      <div class="columns">
-        <div class="column">
-          <section class="welcome">
-            <span class="_title">
-              Bonjour
-              <span class="username">{{
-                this.$store.state.auth.username
-              }}</span>
-            </span>
-            <p>
-              Bienvenue sur votre compte, vous n'êtes pas encore dans un groupe,
-              vous pouvez en rejoindre un ou en créer un.
-            </p>
-            <p>
-              Afin de maximiser vos chances d'être accepté, nous vous
-              conseillons de <a href="">compléter votre profil</a>.
-            </p>
-          </section>
-        </div>
-        <div class="column">
-          <div class="block">
-            <i class="fal fa-search fa-5x _icon" />
-            <span class="text">Rechercher un groupe</span>
-          </div>
-        </div>
-        <div class="column">
-          <div class="block">
-            <i class="fal fa-plus fa-5x _icon" />
-            <span class="text">Créer un groupe</span>
-          </div>
-        </div>
+      <div v-if="user.group_member">
+        <inGroup user="user" />
+      </div>
+      <div v-else>
+        <noGroup />
       </div>
       <hr>
       <div class="columns">
@@ -67,14 +41,27 @@
 
 <script>
 import Footer from '../../components/Footer'
+import NoGroup from '../../components/dashboard/noGroup'
+import InGroup from '../../components/dashboard/inGroup'
 export default {
   name: 'Index',
-  components: { Footer },
+  components: { InGroup, NoGroup, Footer },
   middleware: 'authenticated',
   head() {
     return {
       title: 'Dashboard'
     }
+  },
+  data() {
+    return {
+      user: ''
+    }
+  },
+  mounted() {
+    const self = this
+    this.$axios.get('/users/' + this.$store.state.auth.user_id).then(function (response) {
+      self.user = response.data
+    })
   }
 }
 </script>

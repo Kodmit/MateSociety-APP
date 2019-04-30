@@ -6,7 +6,7 @@
           <section class="block_1">
             <span class="head"><span class="_3">3</span>MOTS</span>
             <span class="text">Sport</span>
-            <span class="text">Estime</span>
+            <span class="text">Développement personnel</span>
             <span class="text">Camaraderie</span>
             <span class="head"><span class="_3">1</span>CONCEPT</span>
           </section>
