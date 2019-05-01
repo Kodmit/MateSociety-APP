@@ -62,9 +62,6 @@ export default {
   name: 'CreateGroup',
   components: { Footer },
   middleware: 'authenticated',
-  meta: {
-    authenticated: { blockGroup: true }
-  },
   head() {
     return {
       title: 'Créer un groupe'
@@ -82,6 +79,13 @@ export default {
   },
   mounted() {
     const self = this
+    this.$axios.get('/users/' + this.$store.state.auth.user_id)
+      .then(function (r) {
+        console.log(r)
+        if (r.data.group_member) {
+          self.$router.push('/dashboard')
+        }
+      })
     this.$axios.get('/countries').then(function (response) {
       self.countries = response.data['hydra:member'][0]['@id']
       self.options = response.data['hydra:member']
@@ -120,7 +124,7 @@ export default {
                 reverseButtons: true
               }).then((result) => {
                 if (result.value) {
-                  // Redirect
+                  self.$router.push('/dashboard')
                 }
               })
             }

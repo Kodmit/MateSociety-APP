@@ -2,7 +2,7 @@
   <div>
     <div class="container home">
       <div v-if="user.group_member">
-        <inGroup user="user" />
+        <inGroup :user="user" />
       </div>
       <div v-else>
         <noGroup />
