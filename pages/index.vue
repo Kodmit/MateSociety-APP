@@ -6,12 +6,12 @@
           <section class="block_1">
             <span class="head"><span class="_3">3</span>MOTS</span>
             <span class="text">Sport</span>
-            <span class="text">Développement personnel</span>
+            <span class="text">Estime</span>
             <span class="text">Camaraderie</span>
             <span class="head"><span class="_3">1</span>CONCEPT</span>
           </section>
           <section class="block_2">
-            <span><span class="title">MateSociety</span> est un réseau social basé sur le sport, l'estime de soi, et la camaraderie.</span>
+            <span><span class="title">MateSociety</span> est un réseau social basé sur le sport, le développement personnel, et la camaraderie.</span>
             <span>Rejoins un groupe de personnes près de chez toi, ou créé ton propre groupe, fixez-vous des objectifs à atteindre et lancez vous !</span>
             <nuxt-link :to="{ path: '/register' }" class="register">
               Inscription

@@ -176,6 +176,11 @@ a {
       font-size: 18px;
     }
 
+    .vdatetime-input {
+      background-color: $white !important;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !important;
+    }
+
     textarea, input {
       width: 100%;
       font-size: 23px;

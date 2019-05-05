@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <nuxt-link :to="{ path: '/' }" class="navbar-item">
         <img src="/images/logo.png" alt="Logo">
-      </a>
+      </nuxt-link>
 
       <a
         role="button"
@@ -21,8 +21,14 @@
     <div id="navBar" class="navbar-menu">
       <div class="navbar-start">
         <nuxt-link class="navbar-item" :to="{ path: '/' }">
-          Home
+          Acceuil
         </nuxt-link>
+        <a class="navbar-item">
+          Forum
+        </a>
+        <a class="navbar-item">
+          Badges
+        </a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More
@@ -53,9 +59,9 @@
           </a>
 
           <div class="navbar-dropdown is-right">
-            <a class="navbar-item">
+            <nuxt-link :to="'/profile/' + $store.state.auth.user_id" class="navbar-item">
               Mon profil
-            </a>
+            </nuxt-link>
             <a class="navbar-item">
               Paramètres
             </a>

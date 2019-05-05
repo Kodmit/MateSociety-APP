@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <div id="user_profile" class="container">
+  <section class="main-content columns is-fullheight">
+    <Sidebar />
+    <div id="user_profile" class="container column is-10">
       <img class="picture" :src="picture">
       <span class="username">{{ data.username }}</span>
       <span class="joined">S'est inscrit {{ date }}</span>
@@ -23,15 +24,16 @@
       <a href="" class="report">Signaler ce profil</a>
     </div>
     <Footer />
-  </div>
+  </section>
 </template>
 
 <script>
 import Moment from 'moment'
 import Footer from '../../components/Footer'
+import Sidebar from '../../components/dashboard/Sidebar'
 export default {
   name: 'UserProfile',
-  components: { Footer },
+  components: { Sidebar, Footer },
   head() {
     return {
       title: 'Profil'

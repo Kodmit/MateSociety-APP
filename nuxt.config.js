@@ -43,7 +43,9 @@ module.exports = {
   plugins: [
     '~/plugins/i18n.js',
     '~/plugins/vuelidate.js',
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/datetime.js',
+    '~/plugins/vue2-filters.js'
   ],
 
   /*
@@ -52,7 +54,8 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/toast'
   ],
   /*
    ** Axios module configuration
@@ -61,6 +64,10 @@ module.exports = {
     baseURL: "http://localhost:8000/api",
     headers: { 'content-type': 'application/json' }
     // See https://github.com/nuxt-community/axios-module#options
+  },
+  toast: {
+    position: 'top-right',
+    duration: 5000
   },
 
   /*

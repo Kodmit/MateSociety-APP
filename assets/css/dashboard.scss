@@ -5,6 +5,12 @@ $blue2: #7CE7FF;
 $grey: #EFF0F9;
 $white: #FFFFFF;
 
+@media screen and (max-width: 768px) {
+  #menu-toggle:checked + .nav-menu {
+    display: block;
+  }
+}
+
 .home {
   margin-top: 50px;
 
@@ -270,14 +276,17 @@ h1 {
 
 #user_profile {
   text-align: center;
+  background-color: #fff;
+  margin-top: 25px;
+  border-radius: 4px;
 
   .picture{
     border-radius:100%;
-    height: 350px;
+    height: 380px;
     display: block;
-    margin: 30px auto 0px;
+    margin: 30px auto 0px auto;
     overflow:hidden;
-    width: 350px;
+    width: 380px;
   }
 
   .username {
@@ -313,12 +322,13 @@ h1 {
     z-index: 2;
   }
 
+
   .wrapper {
     margin: 25px auto;
     width: 50%;
     position: relative;
     font: 28px/36px "Trebuchet MS", Helvetica, sans-serif;
-    background-color: #fff;
+    background-color: $grey;
     padding: 35px;
     border-radius: 3px;
   }
@@ -357,4 +367,111 @@ h1 {
     font-family: "Raleway", sans-serif;
     font-weight: 300;
   }
+}
+
+.manage_group {
+  .picture {
+    text-align: center;
+    padding: 20px;
+    background-color: $blue1;
+    width: 450px;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 3px;
+
+    ._icon {
+      color: $grey;
+      margin-bottom: 20px;
+      font-size: 115px;
+    }
+
+    .file {
+      width: fit-content;
+      margin: auto;
+    }
+
+    .file-name {
+      color: $grey;
+    }
+
+    .file-cta {
+      background-color: $grey;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+
+    ._button {
+      background-color: $grey;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      float: none;
+      color: $dark;
+      margin-top: 20px;
+      border: none;
+      padding: 15px 25px;
+      font-family: "Raleway", sans-serif;
+      border-radius: 3px;
+    }
+
+    ._remove {
+      background-color: #ff6e6e;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      float: none;
+      color: #fff;
+      margin-top: 20px;
+      border: none;
+      padding: 15px 25px;
+      font-family: "Raleway", sans-serif;
+      border-radius: 3px;
+    }
+  }
+}
+
+.checkbox-custom, .radio-custom {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.checkbox-custom-label, .radio-custom-label {
+  position: relative;
+}
+
+.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+  content: '';
+  background: #fff;
+  border: 2px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+  content: "x";
+  font-family: 'Raleway', sans-serif;
+  background: $blue1;
+  color: #fff;
+  line-height: 10px;
+}
+
+.radio-custom + .radio-custom-label:before {
+  border-radius: 50%;
+}
+
+.radio-custom:checked + .radio-custom-label:before {
+  content: "\f00c";
+  font-family: 'FontAwesome';
+  color: #bbb;
+}
+
+.checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
+  outline: 1px solid #ddd; /* focus style */
 }

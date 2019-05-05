@@ -1,51 +1,26 @@
 <template>
-  <div>
-    <div class="container home">
+  <section class="main-content columns is-fullheight">
+    <Sidebar />
+    <div class="home column is-10">
       <div v-if="user.group_member">
         <inGroup :user="user" />
       </div>
       <div v-else>
         <noGroup />
       </div>
-      <hr>
-      <div class="columns">
-        <div class="column">
-          <nuxt-link :to="{ path: '/profile/' + this.$store.state.auth.user_id }">
-            <div class="block small">
-              <i class="fal fa-user fa-5x _icon" />
-              <span class="text">Voir mon profil</span>
-            </div>
-          </nuxt-link>
-        </div>
-
-        <div class="column">
-          <nuxt-link :to="{ path: '/dashboard/edit_profile' }">
-            <div class="block small">
-              <i class="fal fa-user-edit fa-5x _icon" />
-              <span class="text">Modifier mon profil</span>
-            </div>
-          </nuxt-link>
-        </div>
-
-        <div class="column">
-          <div class="block small">
-            <i class="fal fa-cogs fa-5x _icon" />
-            <span class="text">Réglages</span>
-          </div>
-        </div>
-      </div>
     </div>
     <Footer />
-  </div>
+  </section>
 </template>
 
 <script>
 import Footer from '../../components/Footer'
 import NoGroup from '../../components/dashboard/noGroup'
 import InGroup from '../../components/dashboard/inGroup'
+import Sidebar from '../../components/dashboard/Sidebar'
 export default {
   name: 'Index',
-  components: { InGroup, NoGroup, Footer },
+  components: { Sidebar, InGroup, NoGroup, Footer },
   middleware: 'authenticated',
   head() {
     return {
