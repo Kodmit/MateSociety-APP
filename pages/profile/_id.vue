@@ -52,7 +52,6 @@ export default {
     this.$axios
       .get('/users/' + this.$route.params.id)
       .then(function (response) {
-        console.log(response.data)
         self.data = response.data
         self.picture = 'http://localhost:8000/uploads/media/' + response.data.image.filePath
         Moment.locale('fr')
@@ -60,7 +59,6 @@ export default {
         self.country = response.data.country.name
       })
       .catch(function (error) {
-        console.log(error.response)
         if (error.response.status === 404) {
           self.$router.push('/profile/not_found')
         }

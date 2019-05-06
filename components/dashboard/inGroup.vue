@@ -17,11 +17,11 @@
       <div class="column is-5">
         <div class="_card">
           <span class="title"><i class="fal fa-calendar-day" /> Evènements à venir</span>
-          <div v-for="event in orderBy(events, 'event_start')" :key="event['@id']" class="event">
+          <nuxt-link v-for="event in orderBy(events, 'event_start')" :key="event['@id']" :to="'/dashboard/event/' + event['@id'].split('/')[3]" class="event">
             <span class="name"><i class="fas fa-arrow-circle-right" /> {{ event.name }} à {{ event.place }} {{ Moment(event.event_start, 'YYYYMMDD').fromNow() }}</span>
             <span class="date">Le {{ Moment(event.event_start).format('Do MMMM YYYY à LT') }}</span>
-          </div>
-          <nuxt-link to="/dashboard/add_event" class="link">
+          </nuxt-link>
+          <nuxt-link to="/dashboard/event/add" class="link">
             + Ajouter un événement
           </nuxt-link>
         </div>
@@ -119,6 +119,7 @@ export default {
       margin-top: 10px;
       border-radius: 5px;
       padding: 10px;
+      display: block;
       .name {
         font-family: "Raleway", sans-serif;
       }

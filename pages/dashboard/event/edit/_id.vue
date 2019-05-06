@@ -2,7 +2,7 @@
   <section class="main-content columns is-fullheight">
     <Sidebar />
     <div class="column is-10 manage_group">
-      <h1>Ajouter un événement</h1>
+      <h1>Modifier l'événement</h1>
       <div class="columns">
         <div class="column is-8">
           <form class="form" @submit.prevent="submit">
@@ -51,8 +51,8 @@
             </div>
 
             <button class="_button" style="margin-top: 0" type="submit" :disabled="submitStatus === 'PENDING' || $v.$invalid">
-              <span v-if="submitStatus === 'PENDING'">Ajout...</span>
-              <span v-else>Ajouter un événement</span>
+              <span v-if="submitStatus === 'PENDING'">Modification...</span>
+              <span v-else>Modifier</span>
             </button>
           </form>
         </div>
@@ -60,7 +60,7 @@
           <div class="card" style="padding: 20px; width: 90%; margin: auto">
             <h2>Les événements</h2>
             <p>Les événements ne sont visibles que par vous et les membres de votre groupe.</p>
-            <p>Une fois créé, l'événement sera consultable sur le dashboard et dans la rubrique "événements".</p>
+            <p>Une fois modifié, l'événement sera consultable sur le dashboard et dans la rubrique "événements".</p>
           </div>
         </div>
       </div>
@@ -72,14 +72,14 @@
 import { required, minLength, maxLength } from 'vuelidate/lib/validators'
 // import Swal from 'sweetalert2'
 import { Datetime } from 'vue-datetime'
-import Sidebar from '../../../components/dashboard/Sidebar'
+import Sidebar from '../../../../components/dashboard/Sidebar'
 
 export default {
-  name: 'AddEvent',
+  name: 'EditEvent',
   components: { Sidebar, datetime: Datetime },
   head() {
     return {
-      title: 'Ajouter un événement'
+      title: 'Editer un événement'
     }
   },
   data() {
