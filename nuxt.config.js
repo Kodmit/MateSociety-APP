@@ -15,8 +15,10 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
-      { src: '/js/fontawesome.js' }
-    ],
+      { src: '/js/fontawesome.js' },
+      { src: '/js/jquery.vmap.min.js' },
+      { src: '/js/jquery.vmap.france.js' }
+    ]
   },
 
   router: {
@@ -34,7 +36,8 @@ module.exports = {
   css: [
     '~/static/css/bulma.css',
     '@/assets/css/main.css',
-    '@/assets/css/main.scss'
+    '@/assets/css/main.scss',
+    '~/static/css/jqvmap.css'
   ],
 
   /*
@@ -74,7 +77,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['vue-i18n'],
+    vendor: ['vue-i18n', 'jqvmap'],
     postcss: {
       preset: {
         features: {

@@ -150,11 +150,6 @@ export default {
               }
             }
           })
-
-        // END
-        setTimeout(function () {
-          console.log('ok')
-        }, 5000)
       }
     }
   },

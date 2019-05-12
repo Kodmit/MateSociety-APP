@@ -4,10 +4,7 @@
       <div class="column">
         <section class="welcome">
           <span class="_title">
-            Bonjour
-            <span class="username">{{
-              this.$store.state.auth.username
-            }}</span>
+            Bonjour <span class="username">{{ this.$store.state.auth.username }}</span>
           </span>
           <p>
             Bienvenue sur votre compte, vous n'êtes pas encore dans un groupe,
@@ -15,7 +12,9 @@
           </p>
           <p>
             Afin de maximiser vos chances d'être accepté, nous vous
-            conseillons de <a href="">compléter votre profil</a>.
+            conseillons de <nuxt-link to="/dashboard/edit_profile">
+              compléter votre profil
+            </nuxt-link>.
           </p>
         </section>
       </div>
