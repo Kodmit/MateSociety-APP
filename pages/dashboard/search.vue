@@ -5,21 +5,21 @@
       <h1><i class="fal fa-search-location" /> Rechercher un groupe</h1>
       <div class="columns card">
         <div class="column is-6">
-          <h2>Par régions - <b>France</b></h2>
-          <div id="vmap" />
+          <h2>Par régions - <b>{{ map_name }}</b></h2>
+          <Map v-if="show" :map="map" />
           <div class="countries">
             <i class="fas fa-flag-alt" />
             <b>Pays :</b>
-            <a href="">France</a> •
-            <a href="">Belgique</a> •
-            <a href="">Suisse</a>
+            <span class="country_link" @click="renderMap('france_fr', 'France')">France</span> •
+            <span class="country_link" @click="renderMap('be_mill', 'Belgique')">Belgique</span> •
+            <span class="country_link" @click="renderMap('ch_mill', 'Suisse')">Suisse</span>
           </div>
         </div>
         <div class="column is-6">
           <h2>Par mots clés</h2>
           <form class="form" @submit.prevent="submit">
             <div class="field has-addons">
-              <div class="control" style="width: 80%">
+              <div class="control" style="width: 90%">
                 <input v-model="keywords" class="input" placeholder="Entrez une recherche" :disabled="submitStatus === 'PENDING'">
               </div>
               <div class="control">
@@ -30,6 +30,7 @@
               </div>
             </div>
           </form>
+          <SearchResults />
         </div>
       </div>
     </div>
@@ -39,14 +40,18 @@
 <script>
 import jQuery from 'jquery'
 import Sidebar from '../../components/dashboard/Sidebar'
+import Map from '../../components/dashboard/Map'
+import SearchResults from '../../components/dashboard/SearchResults'
 if (process.browser) {
   window.jQuery = window.$ = jQuery
   require('jqvmap')
   require('@/static/js/jquery.vmap.france.js')
+  require('@/static/js/jquery.vmap.belgium.js')
+  require('@/static/js/jquery.vmap.switzerland.js')
 }
 export default {
   name: 'Search',
-  components: { Sidebar },
+  components: { SearchResults, Map, Sidebar },
   head() {
     return {
       title: 'Rechercher'
@@ -54,39 +59,31 @@ export default {
   },
   data() {
     return {
-      keywords: ''
+      keywords: '',
+      map: 'france_fr',
+      map_name: 'France',
+      show: true,
+      submitStatus: ''
     }
   },
-  mounted() {
-    jQuery(document).ready(function () {
-      jQuery('#vmap').vectorMap({
-        map: 'france_fr',
-        backgroundColor: null,
-        color: '#222F47',
-        borderColor: '#FFF',
-        borderOpacity: 1,
-        borderWidth: 1,
-        hoverColor: '#0079C2',
-        enableZoom: false,
-        showTooltip: true,
-        onRegionClick: function (element, code, region)
-        {
-          const message = 'You clicked "' +
-            region +
-            '" which has the code: ' +
-            code.toUpperCase()
-
-          alert(message)
-        }
-      })
-    })
+  mounted() {},
+  methods: {
+    renderMap(key, name) {
+      const self = this
+      self.map = key
+      self.map_name = name
+      self.show = false
+      this.$nextTick(function () {
+        self.show = true
+        console.log(self.show)
+      }, 500)
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
   @import '@/assets/css/dashboard.css';
-  @import '@/static/css/jqvmap.css';
 
   $dark: #222F47;
   $blue1: #0079C2;
@@ -96,17 +93,17 @@ export default {
 
   .search {
 
-    #vmap {
-      width: 100%;
-      height: 700px;
-    }
-
     .form {
       margin-top: 25px;
     }
 
     ._button {
       margin-top: 15px;
+    }
+
+    .country_link {
+      color: $blue1;
+      cursor: pointer;
     }
 
     textarea, input, select {

@@ -15,9 +15,7 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
-      { src: '/js/fontawesome.js' },
-      { src: '/js/jquery.vmap.min.js' },
-      { src: '/js/jquery.vmap.france.js' }
+      { src: '/js/fontawesome.js' }
     ]
   },
 
