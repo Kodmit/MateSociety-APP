@@ -19,10 +19,12 @@
         </section>
       </div>
       <div class="column">
-        <div class="block">
-          <i class="fal fa-search fa-5x _icon" />
-          <span class="text">Rechercher un groupe</span>
-        </div>
+        <nuxt-link to="/dashboard/search">
+          <div class="block">
+            <i class="fal fa-search fa-5x _icon" />
+            <span class="text">Rechercher un groupe</span>
+          </div>
+        </nuxt-link>
       </div>
       <div class="column">
         <nuxt-link to="dashboard/create_group">

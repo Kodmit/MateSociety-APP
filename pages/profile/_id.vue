@@ -63,7 +63,6 @@ export default {
         }
         Moment.locale('fr')
         self.date = Moment(self.data.created_at, 'YYYYMMDD').fromNow()
-        console.log(self.date)
         self.country = response.data.country.name
       })
       .catch(function (error) {

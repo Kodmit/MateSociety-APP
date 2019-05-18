@@ -59,7 +59,7 @@
           </a>
 
           <div class="navbar-dropdown is-right">
-            <nuxt-link :to="'/profile/' + $store.state.auth.user_id" class="navbar-item">
+            <nuxt-link v-if="$store.state.auth" :to="'/profile/' + $store.state.auth.user_id" class="navbar-item">
               Mon profil
             </nuxt-link>
             <a class="navbar-item">

@@ -46,7 +46,8 @@ module.exports = {
     '~/plugins/vuelidate.js',
     '~/plugins/axios.js',
     '~/plugins/datetime.js',
-    '~/plugins/vue2-filters.js'
+    '~/plugins/vue2-filters.js',
+    { src: '~plugins/vue-infinite-scroll.js', ssr: false }
   ],
 
   /*

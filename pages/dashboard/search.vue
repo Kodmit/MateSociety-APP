@@ -17,20 +17,18 @@
         </div>
         <div class="column is-6">
           <h2>Par mots clés</h2>
-          <form class="form" @submit.prevent="submit">
-            <div class="field has-addons">
-              <div class="control" style="width: 90%">
-                <input v-model="keywords" class="input" placeholder="Entrez une recherche" :disabled="submitStatus === 'PENDING'">
-              </div>
-              <div class="control">
-                <button type="submit" class="button is-info" :disabled="submitStatus === 'PENDING'">
-                  <span v-if="submitStatus === 'PENDING'">Recherche...</span>
-                  <span v-else><i class="far fa-search" /></span>
-                </button>
-              </div>
+          <div class="field has-addons">
+            <div class="control" style="width: 90%">
+              <input v-model="input" class="input" placeholder="Entrez une recherche" :disabled="submitStatus === 'PENDING'">
             </div>
-          </form>
-          <SearchResults />
+            <div class="control">
+              <button class="button is-info" :disabled="submitStatus === 'PENDING' || $v.$invalid" @click="search()">
+                <span v-if="submitStatus === 'PENDING'">Recherche...</span>
+                <span v-else><i class="far fa-search" /></span>
+              </button>
+            </div>
+          </div>
+          <SearchResults v-if="show_results" :keywords="keywords" />
         </div>
       </div>
     </div>
@@ -39,6 +37,7 @@
 
 <script>
 import jQuery from 'jquery'
+import { required, minLength, maxLength } from 'vuelidate/lib/validators'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Map from '../../components/dashboard/Map'
 import SearchResults from '../../components/dashboard/SearchResults'
@@ -60,13 +59,30 @@ export default {
   data() {
     return {
       keywords: '',
+      input: '',
       map: 'france_fr',
       map_name: 'France',
       show: true,
-      submitStatus: ''
+      submitStatus: '',
+      show_results: false
+    }
+  },
+  watch: {
+    keywords: function () {
+      this.show_results = false
+      this.$nextTick(function () {
+        this.show_results = true
+      })
     }
   },
   mounted() {},
+  validations: {
+    input: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(20)
+    }
+  },
   methods: {
     renderMap(key, name) {
       const self = this
@@ -75,8 +91,10 @@ export default {
       self.show = false
       this.$nextTick(function () {
         self.show = true
-        console.log(self.show)
-      }, 500)
+      })
+    },
+    search() {
+      this.keywords = this.input
     }
   }
 }

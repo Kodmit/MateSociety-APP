@@ -73,7 +73,7 @@ export default {
     this.$axios.get('/groups/' + this.user.group_member['@id'].split('/')[3])
       .then(function (response) {
         self.group = response.data
-
+        console.log(self.group)
         const dateobj = new Date()
         const currentDate = dateobj.toISOString()
 
