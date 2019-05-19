@@ -31,17 +31,13 @@ export default {
         borderColor: '#FFF',
         borderOpacity: 1,
         borderWidth: 1,
+        selectedColor: '#7CE7FF',
         hoverColor: '#0079C2',
         enableZoom: false,
         showTooltip: true,
         onRegionClick: function (element, code, region)
         {
-          const message = 'You clicked "' +
-            region +
-            '" which has the code: ' +
-            code.toUpperCase()
-
-          alert(message)
+          self.$root.$emit('map_click', [code.toUpperCase(), region])
         }
       })
     })

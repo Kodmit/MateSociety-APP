@@ -5,7 +5,7 @@
       <h1><i class="fal fa-search-location" /> Rechercher un groupe</h1>
       <div class="columns card">
         <div class="column is-6">
-          <h2>Par régions - <b>{{ map_name }}</b></h2>
+          <h2>Par régions - <b>{{ map_name }}</b> <span v-if="dept !== ''"> - {{ dept }}</span></h2>
           <Map v-if="show" :map="map" />
           <div class="countries">
             <i class="fas fa-flag-alt" />
@@ -28,7 +28,7 @@
               </button>
             </div>
           </div>
-          <SearchResults v-if="show_results" :keywords="keywords" />
+          <SearchResults v-if="show_results" :keywords="keywords" :region="dept_code" />
         </div>
       </div>
     </div>
@@ -64,7 +64,9 @@ export default {
       map_name: 'France',
       show: true,
       submitStatus: '',
-      show_results: false
+      show_results: false,
+      dept: '',
+      dept_code: ''
     }
   },
   watch: {
@@ -75,7 +77,20 @@ export default {
       })
     }
   },
-  mounted() {},
+  mounted() {
+    const self = this
+    this.$root.$on('map_click', function (data) {
+      self.dept = data[1]
+      self.dept_code = data[0]
+      if (self.input === '') {
+        self.keywords = ''
+      }
+      self.show_results = false
+      self.$nextTick(function () {
+        self.show_results = true
+      })
+    })
+  },
   validations: {
     input: {
       required,

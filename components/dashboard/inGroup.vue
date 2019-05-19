@@ -30,7 +30,12 @@
         <span class="title">Membres du groupe</span>
         <div class="member-list">
           <nuxt-link v-for="member in group.users" :key="member.username" :to="'/profile/' + member['@id'].split('/')[3]" class="member">
-            <img :src="'http://localhost:8000/uploads/media/' + member.image.filePath" class="min_picture">
+            <div v-if="!member.image" class="no_image_member">
+              <i class="fas fa-user" />
+            </div>
+            <div v-else>
+              <img :src="'http://localhost:8000/uploads/media/' + member.image.filePath" class="min_picture">
+            </div>
             <span v-if="member.username.length>=8" class="username">{{ member.username.substring(0,8)+".." }}</span>
             <span v-if="member.username.length<8" class="username">{{ member.username }}</span>
           </nuxt-link>
@@ -97,6 +102,18 @@ export default {
   $white: #FFFFFF;
 
   .in_group {
+
+    .no_image_member{
+      border-radius: 100%;
+      height: 50px;
+      display: block;
+      margin-top: 10px;
+      overflow: hidden;
+      width: 50px;
+      color: #3678c2;
+      font-size: 33px;
+      background-color: #FFFFFF;
+    }
 
     .picture{
       border-radius:100%;

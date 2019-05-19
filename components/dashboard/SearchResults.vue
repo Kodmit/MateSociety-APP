@@ -4,8 +4,11 @@
       <div class="box">
         <article class="media">
           <div class="media-left">
-            <figure class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            <figure v-if="result.image" class="group_image">
+              <img :src="'http://localhost:8000/uploads/media/' + result.image.filePath" alt="Image">
+            </figure>
+            <figure v-else class="no_image_member">
+              <i class="fas fa-users" />
             </figure>
           </div>
           <div class="media-content">
@@ -57,13 +60,19 @@ export default {
     keywords: {
       type: String,
       default: ''
+    },
+    region: {
+      type: String,
+      default: ''
     }
   },
   data: function () {
     return {
       page: 1,
       results: [],
-      search: this.keywords,
+      search_keywords: this.keywords,
+      search_region: this.region,
+      params: {},
       Moment: Moment
     }
   },
@@ -73,14 +82,23 @@ export default {
   methods: {
     infiniteHandler() {
       const self = this
-      this.$axios.get('/groups', {
-        params: {
-          name: self.search,
+      if (self.search_region !== '') {
+        self.params = {
+          name: self.search_keywords,
+          department: self.search_region,
           _page: self.page
         }
+      }
+      else {
+        self.params = {
+          name: self.search_keywords,
+          _page: self.page
+        }
+      }
+      this.$axios.get('/groups', {
+        params: self.params
       })
         .then(function (response) {
-          console.log(response.data['hydra:member'])
           const data = response.data['hydra:member']
           if (data.length) {
             self.page += 1
@@ -130,6 +148,37 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
   margin-top: 25px;
+
+  .group_image {
+    border-radius: 100%;
+    height: 90px;
+    display: block;
+    margin-top: 10px;
+    overflow: hidden;
+    width: 90px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .no_image_member{
+    border-radius: 100%;
+    height: 90px;
+    display: block;
+    margin-top: 10px;
+    overflow: hidden;
+    width: 90px;
+    color: $blue2;
+    font-size: 40px;
+    background-color: $dark;
+
+    svg {
+      margin: 14px auto;
+      font-size: 57px;
+      width: 100%;
+    }
+  }
 
   .result {
     margin-bottom: 10px;

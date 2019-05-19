@@ -144,6 +144,7 @@ export default {
     })
     this.$axios.get('/users/' + this.$store.state.auth.user_id)
       .then(function (response) {
+        console.log(response)
         if (!response.data.owned_group) {
           self.$router.push('/dashboard')
         }
