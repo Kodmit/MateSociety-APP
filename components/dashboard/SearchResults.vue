@@ -1,6 +1,6 @@
 <template>
   <section class="results">
-    <nuxt-link v-for="result in results" :key="result['@id']" to="/group/ + {{ result.group['@id'] }}" class="result">
+    <nuxt-link v-for="result in results" :key="result['@id']" :to="'/group/' + result['@id'].split('/')[3]" class="result">
       <div class="box">
         <article class="media">
           <div class="media-left">

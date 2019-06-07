@@ -91,11 +91,27 @@ export default {
       end_date: '',
       place: '',
       show_end_var: false,
-      submitStatus: ''
+      submitStatus: '',
+      eventData: ''
     }
   },
   mounted() {
-
+    const self = this
+    this.$axios.get('/group_events/' + this.$route.params.id)
+      .then(function (response) {
+        if (response.status === 200) {
+          self.eventData = response.data
+          console.log(self.eventData)
+          self.name = self.eventData.name
+          self.description = self.eventData.description
+          self.place = self.eventData.place
+          self.start_date = self.eventData.event_start
+          self.start_end = self.eventData.event_end
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   },
   methods: {
     submit() {
@@ -118,12 +134,12 @@ export default {
       const self = this
       this.submitStatus = 'PENDING'
 
-      this.$axios.post('/group_events', object)
+      this.$axios.put('/group_events/' + this.$route.params.id, object)
         .then(function (response) {
           self.submitStatus = ''
-          if (response.status === 201) {
-            self.$toast.success('événement ajouté avec succès')
-            self.$router.push('/dashboard')
+          if (response.status === 200) {
+            self.$toast.success('événement édité')
+            self.$router.push('/dashboard/event')
           }
         })
     },

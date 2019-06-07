@@ -15,14 +15,14 @@
         </nuxt-link>
       </li>
       <li>
-        <a href="#" class="">
+        <nuxt-link to="/dashboard/event" class="">
           <span class="icon"><i class="fal fa-calendar-alt" /></span> Evénements
-        </a>
+        </nuxt-link>
       </li>
       <li>
-        <a href="#" class="">
-          <span class="icon"><i class="fal fa-bullseye-arrow" /></span> Objectifs
-        </a>
+        <nuxt-link to="/group/activities" class="">
+          <span class="icon"><i class="fal fa-bullseye-arrow" /></span> Activités
+        </nuxt-link>
       </li>
       <li>
         <a href="#" class="">

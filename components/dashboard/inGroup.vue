@@ -1,5 +1,6 @@
 <template>
   <div class="in_group">
+    <v-dialog />
     <div class="columns">
       <div class="column is-3">
         <div class="_card">
@@ -9,7 +10,9 @@
           <div v-else>
             <img :src="'http://localhost:8000/uploads/media/' + group.image.filePath" class="picture">
           </div>
-          <span class="group_name">{{ user.group_member.name }}</span>
+          <nuxt-link :to="'/group/' + user.group_member['@id'].split('/')[3]" class="group_name">
+            {{ user.group_member.name }}
+          </nuxt-link>
           <span class="group_location"><i class="fal fa-thumbtack" /> {{ group.city }}</span>
           <span class="group_description">{{ group.description }}</span>
         </div>
@@ -28,8 +31,8 @@
       </div>
       <div class="column is-4">
         <span class="title">Membres du groupe</span>
-        <div class="member-list">
-          <nuxt-link v-for="member in group.users" :key="member.username" :to="'/profile/' + member['@id'].split('/')[3]" class="member">
+        <div class="member-list columns">
+          <nuxt-link v-for="member in group.users" :key="member.username" :to="'/profile/' + member['@id'].split('/')[3]" class="member column is-1">
             <div v-if="!member.image" class="no_image_member">
               <i class="fas fa-user" />
             </div>
@@ -50,6 +53,26 @@
         Gérer mon groupe
       </nuxt-link>
     </div>
+    <section class="feed">
+      <div class="columns">
+        <div class="column is-4">
+          <section class="activities">
+            <span class="title">Les activités</span>
+            <div v-for="activity in group.groupGoals" :key="activity['@id'].split('/')[3]" class="activity" @click="showModal(activity.name, activity.description)">
+              <div class="a_icon">
+                <i :class="'fa fa-' + activity.icon.path" />
+              </div>
+              <div class="a_content">
+                <span class="name">{{ activity.name }}</span>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="column is-8">
+          fff
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -85,9 +108,23 @@ export default {
         self.group.groupEvents.forEach(function (element) {
           if (element.event_start > currentDate) {
             self.events.push(element)
+            console.log(self.events)
           }
         })
       })
+  },
+  methods: {
+    showModal(title, text) {
+      this.$modal.show('dialog', {
+        title: title,
+        text: text,
+        buttons: [
+          {
+            title: 'Fermer'
+          }
+        ]
+      })
+    }
   }
 }
 </script>
@@ -103,6 +140,43 @@ export default {
 
   .in_group {
 
+    .activity {
+      .title {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      background-color: #7CE7FF;
+      padding: 5px;
+      border-radius: 3px;
+      width: 90%;
+      margin: 10px auto;
+      cursor: pointer;
+
+      .a_icon {
+        display: inline-block;
+
+        svg {
+          font-size: 20px;
+          margin-left: 10px;
+          margin-top: 8px;
+          vertical-align: inherit;
+        }
+      }
+
+      .a_content {
+        display: inline-block;
+        margin-left: 15px;
+        margin-top: 6px;
+        vertical-align: top;
+
+        .name {
+          font-family: "Montserrat", sans-serif;
+          font-size: 15px;
+          color: #000;
+        }
+      }
+    }
+
     .no_image_member{
       border-radius: 100%;
       height: 50px;
@@ -113,6 +187,10 @@ export default {
       color: #3678c2;
       font-size: 33px;
       background-color: #FFFFFF;
+    }
+
+    .feed {
+      background-color: $white;
     }
 
     .picture{

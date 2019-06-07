@@ -26,8 +26,10 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#0079C2' },
-
+  loading: {
+    color: '#0079C2',
+    height: '5px'
+  },
   /*
    ** Global CSS
    */
@@ -35,7 +37,8 @@ module.exports = {
     '~/static/css/bulma.css',
     '@/assets/css/main.css',
     '@/assets/css/main.scss',
-    '~/static/css/jqvmap.css'
+    '~/static/css/jqvmap.css',
+    '~/static/css/modal.css'
   ],
 
   /*
@@ -43,6 +46,7 @@ module.exports = {
    */
   plugins: [
     '~/plugins/i18n.js',
+    '~/plugins/modal.js',
     '~/plugins/vuelidate.js',
     '~/plugins/axios.js',
     '~/plugins/datetime.js',
@@ -57,7 +61,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    'cookie-universal-nuxt'
   ],
   /*
    ** Axios module configuration

@@ -3,7 +3,6 @@ export default function ({ $axios, store }) {
     const code = parseInt(error.response && error.response.status)
 
     if ([401, 403].includes(code)) {
-      console.log('penis')
       store.$router.push('/logout')
     }
 

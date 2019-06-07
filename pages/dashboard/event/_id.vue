@@ -2,6 +2,7 @@
   <section class="main-content columns is-fullheight">
     <Sidebar />
     <div class="column is-10 event">
+      <span class="item left" @click="$router.back()"><i class="far fa-angle-left" /> <span>Retour</span></span>
       <div class="card">
         <a class="report"><i class="fal fa-exclamation-triangle" /> Signaler l'événement</a>
         <span class="title"><i class="fas fa-arrow-circle-right" /> {{ event.name }}</span>
@@ -19,8 +20,10 @@
             <span class="creator"><i class="fas fa-user" /> <nuxt-link :to="'/profile/' + creator_id">{{ creator.username }}</nuxt-link></span>
           </section>
           <div :v-if="creator['@id'] === $store.state.auth.user_id" class="admin">
-            <a class="button is-primary">Modifier</a>
-            <a class="button is-danger">Supprimer l'événement</a>
+            <nuxt-link :to="'/dashboard/event/edit/' + $route.params.id" class="button is-primary">
+              Modifier
+            </nuxt-link>
+            <span class="button is-danger" @click="deleteEvent">Supprimer l'événement</span>
           </div>
         </div>
         <div class="column">
@@ -73,9 +76,21 @@ export default {
       })
       .catch(function (error) {
         if (error.response.status === 404) {
-          self.$router.push('/event/not_found')
+          self.$router.push('dashboard/event/not_found')
         }
       })
+  },
+  methods: {
+    deleteEvent() {
+      const self = this
+      this.$axios.delete('/group_events/' + this.$route.params.id)
+        .then(function (response) {
+          if (response.status === 204) {
+            self.$toast.success('évènement supprimé')
+            self.$router.push('/dashboard/event')
+          }
+        })
+    }
   }
 }
 </script>
