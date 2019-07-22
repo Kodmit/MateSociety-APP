@@ -2,7 +2,12 @@
   <section id="view-group">
     <div class="header">
       <div class="profile_pic">
-        <img :src="'https://images.unsplash.com/photo-1478812954026-9c750f0e89fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'">
+        <div v-if="!group.image" class="no_image">
+          <i class="fal fa-user-friends" />
+        </div>
+        <div v-else>
+          <img :src="'http://localhost:8000/uploads/media/' + group.image.filePath">
+        </div>
       </div>
       <div class="menu-bar">
         <span class="item left" @click="$router.back()"><i class="arrow arrow-left" /> <span>Retour</span></span>
@@ -121,6 +126,27 @@ export default {
     display: block;
     margin: 110px auto 0;
     width: fit-content;
+  }
+
+  .no_image {
+    border-radius:100%;
+    height: 400px;
+    display: block;
+    margin: 30px auto 0px auto;
+    overflow:hidden;
+    width: 400px;
+    position: relative;
+    border: 6px solid #fff;
+    object-fit: cover;
+    z-index: 10;
+    background-color: $grey;
+
+    svg {
+      font-size: 180px;
+      display: block;
+      margin: 90px auto;
+      color: $blue1;
+    }
   }
 
   .description {

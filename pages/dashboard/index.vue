@@ -9,13 +9,11 @@
         <noGroup />
       </div>
     </div>
-    <Footer />
   </section>
 </template>
 
 <script>
 import jQuery from 'jquery'
-import Footer from '../../components/Footer'
 import NoGroup from '../../components/dashboard/noGroup'
 import InGroup from '../../components/dashboard/inGroup'
 import Sidebar from '../../components/dashboard/Sidebar'
@@ -25,7 +23,7 @@ if (process.browser) {
 }
 export default {
   name: 'Index',
-  components: { Sidebar, InGroup, NoGroup, Footer },
+  components: { Sidebar, InGroup, NoGroup },
   middleware: 'authenticated',
   head() {
     return {

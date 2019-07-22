@@ -69,7 +69,8 @@
           </section>
         </div>
         <div class="column is-8">
-          fff
+          <span class="title">Fil d'actualité</span>
+          <GroupFeed />
         </div>
       </div>
     </section>
@@ -79,8 +80,10 @@
 <script>
 import Moment from 'moment'
 import Vue2Filters from 'vue2-filters'
+import GroupFeed from './GroupFeed'
 export default {
   name: 'InGroup',
+  components: { GroupFeed },
   mixins: [Vue2Filters.mixin],
   props: {
     user: {
@@ -191,15 +194,16 @@ export default {
 
     .feed {
       background-color: $white;
+      padding: 20px;
     }
 
     .picture{
       border-radius:100%;
-      height: 300px;
+      height: 200px;
       display: block;
       margin: 10px auto 0px auto;
       overflow:hidden;
-      width: 300px;
+      width: 200px;
     }
 
     .link {

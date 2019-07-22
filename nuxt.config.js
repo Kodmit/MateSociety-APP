@@ -51,7 +51,8 @@ module.exports = {
     '~/plugins/axios.js',
     '~/plugins/datetime.js',
     '~/plugins/vue2-filters.js',
-    { src: '~plugins/vue-infinite-scroll.js', ssr: false }
+    { src: '~plugins/vue-infinite-scroll.js', ssr: false },
+    { src: '~plugins/vue-upload-multiple-image.js', ssr: false }
   ],
 
   /*

@@ -1,6 +1,6 @@
 <template>
   <div>
-    dd
+    déconnexion...
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   mounted() {
     Cookie.remove('auth')
     Cookie.remove('user_infos')
-    this.$router.push('/')
+    window.location.href = '/'
   }
 }
 </script>

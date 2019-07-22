@@ -66,9 +66,9 @@
               Paramètres
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
+            <nuxt-link to="/logout" class="navbar-item">
               Déconnexion
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
